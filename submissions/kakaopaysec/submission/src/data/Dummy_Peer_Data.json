@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "description": "FOMO 방어 에이전트용 가상 또래 벤치마크 데이터 [SYNTHETIC]",
+    "compliance_note": "이 데이터는 실제 고객 데이터가 아닌 100% 합성 시뮬레이션 데이터입니다. 절대 특정 개인의 정보가 아닙니다."
+  },
+  "peer_groups": [
+    {
+      "group_profile": {
+        "age_band": "20s",
+        "asset_band": "under_10m",
+        "risk_tolerance": "moderate"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 82,
+      "preferred_safe_action": "monthly_fractional_saving",
+      "roi_metric_link": {
+        "deflection_score": 0.85,
+        "conversion_to_safe_action": 0.15,
+        "compliance_defense_flag": true
+      }
+    },
+    {
+      "group_profile": {
+        "age_band": "30s",
+        "asset_band": "10m_to_50m",
+        "risk_tolerance": "conservative"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 88,
+      "preferred_safe_action": "bond_etf_diversification",
+      "roi_metric_link": {
+        "deflection_score": 0.9,
+        "conversion_to_safe_action": 0.2,
+        "compliance_defense_flag": true
+      }
+    },
+    {
+      "group_profile": {
+        "age_band": "all",
+        "asset_band": "all",
+        "risk_tolerance": "aggressive"
+      },
+      "market_sentiment_reaction": "BUY_FRACTIONAL",
+      "peer_hold_ratio_percent": 65,
+      "preferred_safe_action": "weekly_fractional_saving",
+      "roi_metric_link": {
+        "deflection_score": 0.7,
+        "conversion_to_safe_action": 0.3,
+        "compliance_defense_flag": true
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "age_band": "all",
+      "asset_band": "all",
+      "risk_tolerance": "all",
+      "market_sentiment_reaction": "보수적 관망(Conservative Hold)",
+      "peer_hold_ratio_percent": 80,
+      "preferred_safe_action": "suitability_test_and_robo_advisor"
+    }
+  ]
+}
