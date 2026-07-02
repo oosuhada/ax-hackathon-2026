@@ -16,3 +16,7 @@ append_log_*.py
 patch_r*.py
 generate_rounds.py
 submissions/*/submission/logs/round_*_execution.py
+.local-cache/
+_local-cache/
+trash/
+_trash/
