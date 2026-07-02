@@ -1,0 +1,8 @@
+{
+  "name": "mts-outage-companion",
+  "version": "0.1.0",
+  "description": "핀테크 증권사 MTS(모바일트레이딩시스템) 전산장애 발생 시, 장애 유형을 자동 분류하고 고객 커뮤니케이션 초안 및 재발방지 체크리스트를 생성하는 플러그인. 국회 정무위 자료 기준 카카오페이증권의 MTS 장애 빈도(2026년 1분기 5건, 최근 4년 누적 37건, 조사대상 12개 증권사 중 최다)를 문제 배경으로 설계됨.",
+  "author": "TODO: 대표님 이름/닉네임",
+  "entrypoint": "skills/mts-outage-companion/SKILL.md",
+  "tags": ["fintech", "incident-response", "customer-communication", "kakaopay-securities"]
+}

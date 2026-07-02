@@ -1,0 +1,8 @@
+{
+  "name": "tag-swap-detector",
+  "version": "0.1.0",
+  "description": "패션 이커머스 플랫폼의 '택갈이'(타사 상품 라벨 교체 후 자체제작으로 속여 판매) 의심 상품을 공개 자료 기반으로 스코어링하는 플러그인. 무신사가 2026년 3월 공식 발표한 무관용 대응 정책과, 120만 개 이상 전체 상품 대상 AI 유사성 검토 계획을 문제 배경으로 설계됨.",
+  "author": "TODO: 대표님 이름/닉네임",
+  "entrypoint": "skills/tag-swap-detector/SKILL.md",
+  "tags": ["fashion-ecommerce", "trust-and-safety", "product-verification", "musinsa"]
+}
