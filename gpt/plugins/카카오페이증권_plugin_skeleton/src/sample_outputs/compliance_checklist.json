@@ -1,0 +1,30 @@
+{
+  "input_file": "src/sample_inputs/investment_summary.md",
+  "source_file": "src/sample_inputs/source_links.md",
+  "flagged_phrases": [
+    {
+      "phrase": "확대로 장기 성장성이 높아 보입니다.",
+      "risk_type": "one_sided_upside",
+      "reason": "상방 요인만 강조하고 하방 리스크가 약하게 보일 수 있습니다.",
+      "safer_wording": "성장 요인과 변동성/밸류에이션/거시 리스크를 함께 제시하세요."
+    },
+    {
+      "phrase": "최근 실적도 견조하며, 데이터센터 매출 증가가 이어지고 있어 향후 주가 상승 가능성이 기대됩니다.",
+      "risk_type": "one_sided_upside",
+      "reason": "상방 요인만 강조하고 하방 리스크가 약하게 보일 수 있습니다.",
+      "safer_wording": "성장 요인과 변동성/밸류에이션/거시 리스크를 함께 제시하세요."
+    }
+  ],
+  "risk_factor_status": {
+    "price_volatility": "missing",
+    "principal_loss": "missing",
+    "exchange_rate": "missing",
+    "fees_taxes_costs": "missing",
+    "liquidity": "missing",
+    "valuation": "missing",
+    "macro_rate": "missing",
+    "regulatory": "missing"
+  },
+  "source_count": 3,
+  "needs_manual_review": true
+}

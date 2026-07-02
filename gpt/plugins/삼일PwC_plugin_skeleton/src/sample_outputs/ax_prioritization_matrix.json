@@ -1,0 +1,74 @@
+[
+  {
+    "process_id": "p004",
+    "department": "HR",
+    "process_name": "Internal policy Q&A",
+    "pain_point": "Employees repeatedly ask about benefits and HR policies",
+    "proposed_usecase": "Internal policy Q&A assistant",
+    "impact": 4,
+    "feasibility": 5,
+    "data_readiness": 5,
+    "risk": 3,
+    "priority_class": "Quick Win"
+  },
+  {
+    "process_id": "p002",
+    "department": "Legal",
+    "process_name": "Contract review",
+    "pain_point": "Standard contracts are reviewed repeatedly but risk clauses are hard to track",
+    "proposed_usecase": "Contract risk review assistant",
+    "impact": 4,
+    "feasibility": 5,
+    "data_readiness": 5,
+    "risk": 5,
+    "priority_class": "Governance First"
+  },
+  {
+    "process_id": "p006",
+    "department": "Operations",
+    "process_name": "Invoice reconciliation",
+    "pain_point": "Manual matching causes delays and occasional errors",
+    "proposed_usecase": "Invoice reconciliation assistant",
+    "impact": 4,
+    "feasibility": 5,
+    "data_readiness": 5,
+    "risk": 5,
+    "priority_class": "Governance First"
+  },
+  {
+    "process_id": "p001",
+    "department": "Finance",
+    "process_name": "Monthly management report preparation",
+    "pain_point": "Manual Excel aggregation and narrative writing takes too long",
+    "proposed_usecase": "Management reporting agent",
+    "impact": 4,
+    "feasibility": 3,
+    "data_readiness": 3,
+    "risk": 3,
+    "priority_class": "PoC Candidate"
+  },
+  {
+    "process_id": "p003",
+    "department": "Strategy",
+    "process_name": "Competitor monitoring",
+    "pain_point": "Market and competitor updates are scattered across news and reports",
+    "proposed_usecase": "Management reporting agent",
+    "impact": 3,
+    "feasibility": 4,
+    "data_readiness": 3,
+    "risk": 1,
+    "priority_class": "PoC Candidate"
+  },
+  {
+    "process_id": "p005",
+    "department": "Sales",
+    "process_name": "Proposal drafting",
+    "pain_point": "Sales teams rewrite similar proposal sections for each client",
+    "proposed_usecase": "Proposal drafting copilot",
+    "impact": 3,
+    "feasibility": 4,
+    "data_readiness": 3,
+    "risk": 3,
+    "priority_class": "PoC Candidate"
+  }
+]

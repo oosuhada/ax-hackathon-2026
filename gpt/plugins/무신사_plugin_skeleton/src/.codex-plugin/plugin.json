@@ -1,0 +1,26 @@
+{
+  "name": "musinsa-review-to-action",
+  "version": "0.1.0",
+  "description": "A Codex plugin that turns product reviews and customer feedback into seller-facing action plans for product, detail-page, CS, and marketing improvements.",
+  "author": {
+    "name": "Woosoo Jang",
+    "email": "replace-with-your-email@example.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "musinsa",
+    "review-analysis",
+    "seller-tools",
+    "commerce-ai",
+    "customer-feedback",
+    "AX"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Musinsa Review-to-Action",
+    "shortDescription": "Convert fashion product reviews into practical seller/MD actions.",
+    "longDescription": "For Musinsa-style marketplace workflows: analyze reviews, Q&A, return reasons, and product context to produce prioritized actions for product improvement, size/detail-page clarity, CS FAQ, response macros, and marketing copy.",
+    "developerName": "Woosoo Jang",
+    "category": "Productivity"
+  }
+}

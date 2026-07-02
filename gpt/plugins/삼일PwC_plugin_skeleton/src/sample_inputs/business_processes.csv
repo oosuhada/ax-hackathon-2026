@@ -1,0 +1,7 @@
+process_id,department,process_name,current_pain_point,frequency,data_availability,risk_sensitivity
+p001,Finance,Monthly management report preparation,"Manual Excel aggregation and narrative writing takes too long",monthly,medium,medium
+p002,Legal,Contract review,"Standard contracts are reviewed repeatedly but risk clauses are hard to track",weekly,high,high
+p003,Strategy,Competitor monitoring,"Market and competitor updates are scattered across news and reports",weekly,medium,low
+p004,HR,Internal policy Q&A,"Employees repeatedly ask about benefits and HR policies",daily,high,medium
+p005,Sales,Proposal drafting,"Sales teams rewrite similar proposal sections for each client",weekly,medium,medium
+p006,Operations,Invoice reconciliation,"Manual matching causes delays and occasional errors",daily,high,high
