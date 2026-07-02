@@ -1,0 +1,46 @@
+# ============================================================
+# 자동 병합 워크플로우
+# 'agent:ready-to-merge' 라벨이 추가되면 자동 스쿼시 병합을 활성화합니다.
+# integration/* 브랜치를 대상으로 하는 PR에만 적용됩니다.
+# main 브랜치 대상 PR은 수동 머지를 유지합니다.
+# ============================================================
+name: 자동 병합
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    name: 자동 스쿼시 병합
+    runs-on: ubuntu-latest
+
+    # 조건: 'agent:ready-to-merge' 라벨 + integration/* 브랜치 대상
+    if: >-
+      github.event.label.name == 'agent:ready-to-merge' &&
+      startsWith(github.event.pull_request.base.ref, 'integration/')
+
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      # CI 체크 통과 후 자동 스쿼시 병합 활성화
+      # --auto 플래그: 필수 상태 체크가 모두 통과하면 자동으로 병합 실행
+      - name: 자동 병합 활성화 (스쿼시)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔄 PR #${{ github.event.pull_request.number }} 자동 병합 활성화 중..."
+          echo "   대상 브랜치: ${{ github.event.pull_request.base.ref }}"
+          echo "   소스 브랜치: ${{ github.event.pull_request.head.ref }}"
+
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --auto \
+            --squash \
+            --repo ${{ github.repository }}
+
+          echo "✅ 자동 병합이 활성화되었습니다. CI 체크 통과 시 자동으로 스쿼시 병합됩니다."

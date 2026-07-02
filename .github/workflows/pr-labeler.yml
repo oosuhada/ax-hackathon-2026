@@ -1,0 +1,23 @@
+# ============================================================
+# PR 자동 라벨러
+# 변경된 파일 경로에 따라 PR에 라벨을 자동으로 부여합니다.
+# pull_request_target 이벤트를 사용하여 포크 PR도 지원합니다.
+# ============================================================
+name: PR 자동 라벨링
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    # 라벨 설정 파일(.github/labeler.yml) 기반으로 라벨 부여
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

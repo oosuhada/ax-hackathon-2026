@@ -1,5 +1,5 @@
 ---
-name: samilpwc-ceo-issue-judge
+name: ceo-issue-judge-agent
 description: 기업의 경영 데이터에서 이상 패턴을 탐지하고 SOP 기반의 객관적 판독 리포트를 생성하는 에이전트.
 ---
 
