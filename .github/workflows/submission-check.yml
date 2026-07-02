@@ -26,7 +26,32 @@ jobs:
         with:
           fetch-depth: 0  # diff 비교를 위해 전체 히스토리 필요
 
-      # ── 1단계: 구조 검증 ──────────────────────────────────
+      # ── 0단계: 금지 파일 가드 ──────────────────────────────
+      # .DS_Store, .env.local 등이 커밋되지 않도록 방지합니다.
+      - name: "🚫 금지 파일 가드 (.DS_Store, .env)"
+        run: |
+          DIFF_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} \
+                       ${{ github.event.pull_request.head.sha }})
+          FAIL=0
+
+          # .DS_Store 검사
+          if echo "$DIFF_FILES" | grep -q '\.DS_Store'; then
+            echo "::error::❌ .DS_Store 파일이 커밋에 포함되어 있습니다. .gitignore를 확인하세요."
+            FAIL=1
+          fi
+
+          # .env 파일 검사 (.env.example은 허용)
+          ENV_FILES=$(echo "$DIFF_FILES" | grep -E '\.env' | grep -v '\.env\.example' || true)
+          if [ -n "$ENV_FILES" ]; then
+            echo "::error::❌ 환경변수 파일이 커밋에 포함되어 있습니다: $ENV_FILES"
+            FAIL=1
+          fi
+
+          if [ "$FAIL" -ne 0 ]; then
+            exit 1
+          fi
+          echo "✅ 금지 파일 없음"
+
       # 변경된 파일에서 회사명을 감지하고 필수 파일 존재 여부를 확인합니다.
       - name: "1️⃣ 구조 검증 (필수 파일 존재 확인)"
         id: structure
@@ -42,8 +67,8 @@ jobs:
             exit 0
           fi
 
-          # 변경된 회사 감지 (중복 제거)
-          COMPANIES=$(echo "$CHANGED" | grep -oP '^submissions/\K[^/]+' | sort -u)
+          # 변경된 회사 감지 (중복 제거, POSIX 호환)
+          COMPANIES=$(echo "$CHANGED" | sed -n 's|^submissions/\([^/]*\)/.*|\1|p' | sort -u | tr '\n' ' ' | sed 's/ *$//')
           echo "감지된 회사: $COMPANIES"
           echo "companies=$COMPANIES" >> "$GITHUB_OUTPUT"
 
@@ -96,11 +121,13 @@ jobs:
       # JSON 유효성, name 필드 kebab-case 여부, skills 폴더명 일치를 확인합니다.
       - name: "2️⃣ plugin.json 유효성 검증"
         if: always() && steps.structure.outputs.companies != ''
+        env:
+          COMPANIES: ${{ steps.structure.outputs.companies }}
         run: |
           set -euo pipefail
           FAIL=0
 
-          for COMPANY in ${{ steps.structure.outputs.companies }}; do
+          for COMPANY in $COMPANIES; do
             PLUGIN="submissions/${COMPANY}/submission/src/.codex-plugin/plugin.json"
 
             if [ ! -f "$PLUGIN" ]; then
@@ -154,11 +181,13 @@ jobs:
       # YAML frontmatter의 name 필드가 부모 폴더명과 일치하는지 확인합니다.
       - name: "3️⃣ SKILL.md name 필드 검증"
         if: always() && steps.structure.outputs.companies != ''
+        env:
+          COMPANIES: ${{ steps.structure.outputs.companies }}
         run: |
           set -euo pipefail
           FAIL=0
 
-          for COMPANY in ${{ steps.structure.outputs.companies }}; do
+          for COMPANY in $COMPANIES; do
             SKILLS_DIR="submissions/${COMPANY}/submission/src/skills"
 
             if [ ! -d "$SKILLS_DIR" ]; then
@@ -208,11 +237,10 @@ jobs:
 
           # 검사할 패턴 목록 (패턴|설명)
           PATTERNS=(
-            "ghp_|GitHub Personal Access Token (classic)"
-            "github_pat_|GitHub Fine-grained PAT"
-            "GITHUB_TOKEN=gh|하드코딩된 GITHUB_TOKEN"
-            "\.env\.local|.env.local 파일 참조 (내용 유출 위험)"
-            "Bearer gh|GitHub Bearer 토큰"
+            "ghp_[A-Za-z0-9]|GitHub Personal Access Token (classic)"
+            "github_pat_[A-Za-z0-9]|GitHub Fine-grained PAT"
+            "GITHUB_TOKEN=gh[ps]_|하드코딩된 GITHUB_TOKEN"
+            "Bearer ghp_|GitHub Bearer 토큰"
           )
 
           for ENTRY in "${PATTERNS[@]}"; do
@@ -261,7 +289,7 @@ jobs:
       # ── 6단계: 금지 문자열 검사 (카카오페이증권 전용) ──────
       # 금융 규제 관련 금지 표현이 포함되어 있는지 검사합니다.
       - name: "6️⃣ 금지 문자열 검사 (카카오페이증권)"
-        if: always() && contains(steps.structure.outputs.companies || '', 'kakaopaysec')
+        if: always() && contains(steps.structure.outputs.companies, 'kakaopaysec')
         run: |
           set -euo pipefail
 

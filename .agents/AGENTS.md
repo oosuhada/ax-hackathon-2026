@@ -262,7 +262,9 @@ PR_REVIEW          -> skills/ax-pr-review/SKILL.md
 GIT_SYNC           -> skills/ax-git-workflow/SKILL.md
 INTEGRATION_MERGE  -> skills/ax-integration-merge/SKILL.md
 ```
-모든 `.agents/skills/*/SKILL.md`는 산출물 끝에 아래 계약을 포함해야 한다. 이 계약이 없으면 다음 에이전트가 작업을 이어받을 수 없으므로 미완성으로 간주한다.
+**제품 파이프라인 스킬** (Research/Architecture/Build/QA Phase)의 `.agents/skills/*/SKILL.md`는 산출물 끝에 아래 계약을 포함해야 한다. 이 계약이 없으면 다음 에이전트가 작업을 이어받을 수 없으므로 미완성으로 간주한다.
+
+> **면제:** Git/PR Phase 인프라 스킬 (`ax-pr-create`, `ax-pr-review`, `ax-git-workflow`, `ax-integration-merge`)은 제품 산출물이 아닌 워크플로우 절차이므로 handoff 계약 대상이 아니다.
 
 ```yaml
 handoff:
