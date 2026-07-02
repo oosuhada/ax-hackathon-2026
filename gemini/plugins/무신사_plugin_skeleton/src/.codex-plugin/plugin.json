@@ -1,0 +1,8 @@
+{
+  "name": "musinsa-kfashion-route-curator",
+  "version": "1.0.0",
+  "description": "외국인 및 2030 고객의 취향과 동선 제약을 기반으로 무신사 오프라인 매장 중심의 K-패션 쇼핑 코스를 제안하는 플러그인.",
+  "skills": [
+    "musinsa-kfashion-route-curator"
+  ]
+}

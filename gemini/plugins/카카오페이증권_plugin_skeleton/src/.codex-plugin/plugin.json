@@ -1,0 +1,8 @@
+{
+  "name": "kps-investor-risk-brief",
+  "version": "1.0.0",
+  "description": "AI 기반 투자정보 요약글의 리스크를 분석하고 투자자 보호 관점의 검토 의견과 문구를 보강하는 카카오페이증권용 컨설팅/검토 보조 플러그인.",
+  "skills": [
+    "kps-investor-risk-brief"
+  ]
+}
