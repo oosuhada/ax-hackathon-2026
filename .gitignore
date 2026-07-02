@@ -1,0 +1,18 @@
+.DS_Store
+
+# Local secrets. Never commit GitHub tokens or environment values.
+.env
+.env.*
+!.env.example
+
+# Local editor/runtime noise.
+node_modules/
+.venv/
+__pycache__/
+
+# Generated packages and local hackathon scratch scripts.
+*.zip
+append_log_*.py
+patch_r*.py
+generate_rounds.py
+submissions/*/submission/logs/round_*_execution.py
