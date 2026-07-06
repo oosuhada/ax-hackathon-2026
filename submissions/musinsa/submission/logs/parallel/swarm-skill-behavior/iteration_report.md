@@ -1,18 +1,20 @@
-## [2026-07-09 22:50] Iteration Report
+
+## [2026-07-09 22:52] Iteration 2 Report
 - **Status**: END
-- **Next Wake Scheduled At**: 1 minute from now (Task ID: 6f87f94b-49b5-471e-a02d-0b371a8396cb/task-43)
+- **Next Wake Scheduled At**: 1 minute from now (Task ID: 6f87f94b-49b5-471e-a02d-0b371a8396cb/task-85)
 - **Mandatory Subagents Used**:
   | Subagent Role | Task Addressed |
   | --- | --- |
-  | `qa-tester` | SKILL.md vs demo_transcript inconsistencies (Case 9, 10) |
-  | `ui-parser-breaker` | Markdown backtick and missing key UI breaker risks |
-  | `adversarial-red-teamer` | Edge cases for out-of-stock, outfits, contradictions |
-  | `data-privacy-scrubber` | Scrubbing echo of personal taste/shape in rejections |
-  | `security-auditor` | Preventing elaborate rejections of Prompt Injection |
+  | `qa-tester` | Fixed tie-breaker logic and mandatory rejection trap |
+  | `ui-parser-breaker` | JSON escaping rules for reflected user input |
+  | `adversarial-red-teamer` | Inventory checks and statement piece exploits |
+  | `data-privacy-scrubber` | Exempting TPO locations from PII scrubbing |
+  | `security-auditor` | Forbidding internal metrics leakage |
 
 ### Summary of Changes
-- Added exception for general category queries in Workflow Step 2.
-- Ensured inventory checks in Choice-Limiter logic.
-- Prevented wrapping JSON in markdown blocks.
-- Explicitly specified "N/A" for non-applicable fields like `confidence` and `return_risk_note`.
-- Prevented leaking prompt injection rationale.
+- Added JSON sanitization constraint.
+- Exempted POIs/locations from PII scrub to preserve TPO.
+- Changed tie-breaker to use price instead of text notes.
+- Added strict inventory prioritization check.
+- Added statement piece rule to prevent outfit clashing.
+- Added Guardrail 6 to prevent internal data leakage.
