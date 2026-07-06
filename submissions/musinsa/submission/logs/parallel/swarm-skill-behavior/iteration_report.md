@@ -18,3 +18,23 @@
 - Added strict inventory prioritization check.
 - Added statement piece rule to prevent outfit clashing.
 - Added Guardrail 6 to prevent internal data leakage.
+
+## [2026-07-09 23:00] Iteration 3 Report
+- **Status**: END
+- **Next Wake Scheduled At**: End of task (no further iterations required)
+- **Mandatory Subagents Used**:
+  | Subagent Role | Task Addressed |
+  | --- | --- |
+  | `qa-tester` | Missing Input vs Explicit Waiver conflicts, Silent Exclusion paradox |
+  | `ui-parser-breaker` | JSON typing schema vulnerabilities (numbers/objects vs strings) |
+  | `adversarial-red-teamer` | Couple Look bypass to override 1-pick rule |
+  | `data-privacy-scrubber` | Biometric data and physical flaw echoing risks |
+  | `security-auditor` | Pending (Not processed for Iteration 3 due to block) |
+
+### Summary of Changes
+- Added Explicit Waiver logic for 'Missing Input Pivot'.
+- Added prioritization (TPO -> Budget -> Fit) when multiple inputs are missing.
+- Allowed explaining inventory exhaustion in 'why_this' when 'rejected_options' is populated with explicitly negative constraints.
+- Added strict JSON string formatting constraints for output values.
+- Enforced single unisex/overall item recommendation for 'couple looks' and multi-person requests.
+- Forbidden echoing of explicit physical measurements and flaws (must translate to objective styling terms).
