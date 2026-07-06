@@ -51,3 +51,57 @@
   "return_risk_note": "N/A"
 }
 ```
+
+---
+## Candidate 7 (Mixed Queries & Steering Demo)
+**Input:** "나 내일 제주도 가는데 입을 옷 추천해줘. 아, 그리고 제주도 맛집도 몇 개만 알려줄래?"
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "무신사 스탠다드 라이트웨이트 나일론 파라슈트 팬츠 (item_007)",
+  "why_this": "제주도 방풍 파라슈트 팬츠 최적. 맛집 정보는 미제공.",
+  "rejected_options": [
+    "와이드데님(무거움)",
+    "리넨셔츠(바람취약)"
+  ],
+  "confidence": "95%",
+  "return_risk_note": "허리 밴딩 핏 조절 가능. 사이즈 미스 리스크 최소화."
+}
+```
+
+---
+## Candidate 8 (Extreme Weather Constraints Demo)
+**Input:** "영하 15도 한파에 야외에서 8시간 동안 현장 작업해야 하는데, 두껍지 않으면서도 얼어 죽지 않을 아우터 하나만 골라줘."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "내셔널지오그래픽 타루가 고어텍스 발열 패딩 (item_008)",
+  "why_this": "영하 15도 야외, 얇은 고어텍스 발열 안감.",
+  "rejected_options": [
+    "헤비롱패딩(활동저해)",
+    "경량패딩레이어링(보온부족)"
+  ],
+  "confidence": "99%",
+  "return_risk_note": "내구성 강한 소재로 마모 불만족 리스크 낮음."
+}
+```
+
+---
+## Candidate 9 (Complex Body Type Combinations Demo)
+**Input:** "제가 어깨는 엄청 넓고 팔도 긴 편인데, 허리랑 하체는 많이 말라서 바지가 자꾸 흘러내려요. 이번 주말 데이트 때 입을 상하의 코디 딱 하나만 추천해주세요."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "수아레 래글런 하프 집업 니트 & 와이드 밴딩 핀턱 슬랙스 셋업 (item_009)",
+  "why_this": "어깨 커버 래글런, 마른 하체 보완 핀턱 밴딩 와이드 핏.",
+  "rejected_options": [
+    "드롭숄더셔츠(상체부각)",
+    "슬림슬랙스(불균형심화)"
+  ],
+  "confidence": "96%",
+  "return_risk_note": "체형 단점 보완 핏. 반품 리스크 극히 낮음."
+}
+```
