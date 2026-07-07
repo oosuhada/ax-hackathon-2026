@@ -2,10 +2,10 @@
 
 ## 1. 개요 및 60초 피치
 - **1문장 문제 정의**: AI가 답을 말하는 것이 아니라, 경영진이 조직 내 결정을 밀어붙일 수 있는 감사 가능한 근거물을 만든다.
-- **[Pain]** 부서 간 배분 분쟁 시, 72%의 C-레벨 임원은 과도한 책임 부담으로 의사결정을 유보합니다. (McKinsey 조사)
+- **[Pain]** 부서 간 배분 분쟁 시, McKinsey 조사에 따르면 72%의 고위 경영진이 **나쁜 전략적 결정이 좋은 결정만큼이나 빈번**하다고 응답했습니다. `[ASSUMPTION based on commonly cited McKinsey survey — 원문 URL 접근 불가로 직접 인용 대신 일반적으로 알려진 통계 수치로 표기]`
 - **[Moment]** 단순 '텍스트 요약 AI'는 내부 사내 정치를 뚫고 총대를 메어주지 않습니다.
-- **[Relief]** 본 에이전트는 합성 재무 데이터를 주입하면 3초 만에 데이터 모순을 스캔하고, **사내 규정(SOP)을 인용한 객관적 권고 리포트**를 출력합니다.
-- **[Trust]** 모순이나 SOP 부재 시 AI는 자의적 추측(Hallucination)을 최소화하도록 설계되었으며, 선례가 없는 엣지 케이스는 즉각 인간 컨설턴트의 검토(Human-in-the-Loop)로 이관하여 **100%의 감사 방어력과 객관성**을 유지합니다.
+- **[Relief]** 본 에이전트는 합성 재무 데이터를 주입하면 수 초 내에 데이터 이상 징후를 자동으로 플래그합니다. (실제 응답 속도는 LLM 추론 시간에 따라 변동) **사내 규정(SOP)을 인용한 객관적 권고 리포트**를 출력합니다.
+- **[Trust]** 모순이나 SOP 부재 시 AI는 자의적 추측(Hallucination)을 최소화하도록 설계되었으며, 선례가 없는 엣지 케이스는 즉각 인간 컨설턴트의 검토(Human-in-the-Loop)로 이관하여 높은 수준의 감사 추적성과 객관성을 유지하도록 설계되었습니다.
 
 > ℹ️ *엔터프라이즈 환경 도입을 위한 시스템 아키텍처 및 Simulated RAG 데모 환경의 기술적 스펙은 하단의 '5. Known Limitations & Roadmap' 섹션에서 확인할 수 있습니다.*
 
@@ -37,25 +37,15 @@
 - `logs/iteration_report.md`에 기록된 20라운드의 집요한 공격(프롬프트 인젝션, 책임 전가 유도, PII 주입, 스키마 파괴 등 60종의 테스트 매트릭스)을 모두 패스(PASS)했습니다.
 
 ## 4. 컨설팅 ROI (Business Impact)
-주니어 컨설턴트의 데이터 대조 공수(건당 80h → 8h) 단축을 가정한 `[ASSUMPTION]` 기반 7축 모델입니다.
+주니어 컨설턴트의 데이터 대조 공수(건당 80h → 8h) 단축을 가정한 `[ASSUMPTION]` 기반 핵심 5축 모델입니다.
 
 | ROI 축 | 상세 내용 | 비고 |
 |--------|-----------|------|
-| **1. Delivery Cost** | 리서치 공수 90% 절감 (시간당 단가 10만 원 시 건당 720만 원 절약) | **[ASSUMPTION]** |
-| **2. Rework Reduction**| 객관적 SOP 인용으로 경영진 반려 및 재작업률 30% → 5% 감축 | **[ASSUMPTION]** |
-| **3. Justification** | 임원의 의사결정 부담 완화 및 사내 정치적 교착 상태 돌파 (불필요한 주간 회의 시간 단축 등 정성적 효과 포함) | **[FACT]** |
-| **4. Follow-on Project** | 탐지된 엣지 케이스 기반 '조직 혁신 컨설팅' 등 2차 수주 연계 (정성적 지표: Identifying systemic resource misallocation) | **[UNKNOWN]** |
-| **5. Time-to-Audit**   | B2B 컴플라이언스 대응을 위한 감사 증적(Audit Trail) 생성 속도 95% 단축 (기존 수기 작성 대비) | **[ASSUMPTION]** |
-| **6. Operational Cost**| API 토큰, Vector DB 운영 및 Human-in-the-Loop 검토 인건비 | **[ASSUMPTION]** |
-| **7. Audit Defensibility** | `mapping_rationale`을 통한 명시적 인과관계 증명으로 AI 산출물에 대한 신뢰도(Trust Building) 향상 및 감사 방어력 극대화 | **[FACT]** |
-| **8. Client Onboarding**   | 표준화된 SOP 매핑 프레임워크를 통해 신규 고객사 도입 시 초기 셋업 및 검증 기간(Client Onboarding Time) 대폭 단축 | **[ASSUMPTION]** |
-| **9. Security Compliance Cost Reduction** | Air-gapped Vector DB 및 IAM/ACL 기반의 아키텍처로 엔터프라이즈 망분리 요건을 원천 충족하여 보안 검토 및 망연계 인프라 구축 비용(건당 수천만 원 상당) 대폭 절감 | **[FACT]** |
-| **10. Reputation Risk Avoidance** | PII 및 원시 재무 데이터 사전 차단(정규화 강제)을 통한 핵심 영업비밀(Trade Secret) 유출 방지로 법적 분쟁 및 브랜드 평판 리스크 원천 차단 | **[FACT]** |
-| **11. Audit Consistency** | 인간 컨설턴트와 달리 피로도(Fatigue)나 감정에 치우치지 않고 100% 동일한 SOP 기준으로 일관된 판단을 내림으로써 감사 품질의 균일성(Quality Consistency) 극대화 | **[FACT]** |
-| **12. Executive Communication Efficiency** | C-Level 경영진이 선호하는 단답형/객관적 톤앤매너(Dry Tone)로 보고서를 자동 작성하여, 임원진의 오독 방지 및 의사결정 커뮤니케이션 속도 대폭 향상 (정성적 지표: Conflict Resolution Index(CRI) 대시보드를 통한 의사소통 효율성 정량화) | **[ASSUMPTION]** |
-| **13. Enterprise Security & Compliance** | 프롬프트 인젝션(Obfuscation, Token Smuggling), PII/핵심 영업비밀 탈취 등 고도화된 타겟형 해킹 및 유출 시도를 선제적으로 방어하여 법적 분쟁 및 컴플라이언스 유지비용 절감 | **[FACT]** |
-| **14. Business Continuity & Resilience** | 데이터 폭탄(DoW, Array Expansion), 파서 루프(Recursive JSON), 시스템 폭탄(ReDoS, Logic Bomb) 등 인프라 파괴 공격을 방어하여 악의적 과금 및 비즈니스 중단(Downtime) 시간 대폭 완화 | **[FACT]** |
-| **15. Trust & Executive Immunity** | 딥페이크 지시어(Voice Cloning/Homophone) 및 가짜 뉴스(Exogenous Knowledge) 주입을 통한 허위 정보 유도를 차단하여 경영진의 잘못된 의사결정 방지 | **[FACT]** |
+| **1. 데이터 대조 공수 절감** | 리서치 공수 90% 절감 (건당 80h → 8h, 시간당 단가 10만 원 기준 건당 720만 원 절약) | **[ASSUMPTION]** |
+| **2. 리스크 조기 탐지** | 전분기 대비 30% 이상 이상 수치 자동 플래그 — 이상 징후를 수 초 내에 탐지하여 인간 분석가 부담 경감 | **[DESIGN_GOAL]** |
+| **3. 감사 추적성 확보** | `mapping_rationale`을 통한 명시적 SOP 매핑 근거 자동 기록으로 감사 대응 속도 대폭 향상 | **[FACT]** |
+| **4. API 비용 효율성** | 단일 세션 기준 LLM 토큰 소비량 최적화. 실측 시 건당 비용 추적 가능 | **[ASSUMPTION]** |
+| **5. 의사결정 일관성** | 동일 이슈 → 동일 SOP 적용으로 인간 컨설턴트의 피로도·주관 편향 없이 균일한 판단 품질 유지 | **[DESIGN_GOAL]** |
 
 ## 7. 운영(Operational) KPIs
 - **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 Compliance-First 가드레일로 인해 무해한 데이터가 인간 검토(Human-in-the-Loop)로 이관되어 병목을 일으키지 않도록, 이관 건수 중 "수정 없이 단순 통과"된 건의 비율을 모니터링하여 방어 민감도를 지속 튜닝합니다.
