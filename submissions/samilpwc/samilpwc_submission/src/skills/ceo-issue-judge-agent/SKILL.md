@@ -48,7 +48,7 @@ description: 기업의 경영 데이터에서 이상 패턴을 탐지하고 SOP 
   "hidden_issue": "발견된 비정상 패턴 또는 인젝션 시도 명시",
   "evidence": "수치적 증거 요약",
   "sop_reference": "[SOP-ID] 조항 원문 인용 (없을 시 'N/A')",
-  "mapping_rationale": "수치적 증거와 SOP 조항 사이의 인과관계 1문장 증명 (Explainability 보장)",
+  "mapping_rationale": "수치적 증거와 SOP 조항 사이의 인과관계 1문장 증명 (Explainability 보장). 매핑 가능한 SOP가 없으면 '해당 SOP 없음 - 인간 전문가 검토 필요'로 기입. 이 필드는 모든 응답에 반드시 포함할 것.",
   "business_impact": "해당 이슈가 미치는 비즈니스적 파급력",
   "recommended_action": "CEO를 위한 객관적 권고안 (SOP 부재 시 검토 이관 명시)",
   "review_required": false
@@ -62,7 +62,7 @@ handoff:
   phase: Final 20-Round Validated
   primary_use_case: Evidence-Backed CEO Issue Judge
   files_created_or_modified:
-    - submissions/samilpwc/submission/src/skills/ceo-issue-judge-agent/SKILL.md
+    - submissions/samilpwc/samilpwc_submission/src/skills/ceo-issue-judge-agent/SKILL.md
   required_inputs:
     - Dummy_Business_Data.json
     - Dummy_SOP_Snippets.json

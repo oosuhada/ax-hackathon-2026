@@ -1,0 +1,58 @@
+{
+  "_label": "[SYNTHETIC]",
+  "company_id": "SYNTH_CORP_999",
+  "business_unit_metrics": {
+    "Unit_A": {
+      "headcount": 120,
+      "performance_score": 85,
+      "source": "[SYNTHETIC] 삼일PwC CEO Issue Judge 데모용 비식별 부서 지표"
+    },
+    "Unit_B": {
+      "headcount": 45,
+      "performance_score": 92,
+      "source": "[SYNTHETIC] 삼일PwC CEO Issue Judge 데모용 비식별 부서 지표"
+    },
+    "Unit_C": {
+      "headcount": 30,
+      "performance_score": 50,
+      "source": "[SYNTHETIC] 삼일PwC CEO Issue Judge 데모용 비식별 부서 지표"
+    },
+    "Unit_D": {
+      "headcount": 55,
+      "performance_score": 78,
+      "source": "[SYNTHETIC] 삼일PwC CEO Issue Judge 데모용 비식별 부서 지표"
+    },
+    "Unit_E": {
+      "headcount": 65,
+      "performance_score": 88,
+      "source": "[SYNTHETIC] 삼일PwC CEO Issue Judge 데모용 비식별 부서 지표"
+    }
+  },
+  "cost_allocations": {
+    "Unit_A": {
+      "marketing_cost_index": 110.5,
+      "rnd_cost_index": 95.0
+    },
+    "Unit_B": {
+      "marketing_cost_index": 105.0,
+      "rnd_cost_index": 150.0
+    },
+    "Unit_C": {
+      "marketing_cost_index": 500.0,
+      "rnd_cost_index": 80.0
+    },
+    "Unit_D": {
+      "marketing_cost_index": 98.0,
+      "rnd_cost_index": 120.0
+    },
+    "Unit_E": {
+      "marketing_cost_index": 115.0,
+      "rnd_cost_index": 88.0
+    }
+  },
+  "revenue_trends": {
+    "Q1": { "Unit_A_index": 100.0, "Unit_B_index": 100.0, "Unit_C_index": 100.0, "Unit_D_index": 100.0, "Unit_E_index": 100.0 },
+    "Q2": { "Unit_A_index": 102.5, "Unit_B_index": 112.5, "Unit_C_index": 120.0, "Unit_D_index": 95.0, "Unit_E_index": 108.0 },
+    "Q3": { "Unit_A_index": 98.7, "Unit_B_index": 212.5, "Unit_C_index": 5000.0, "Unit_D_index": 130.0, "Unit_E_index": 112.0 }
+  }
+}

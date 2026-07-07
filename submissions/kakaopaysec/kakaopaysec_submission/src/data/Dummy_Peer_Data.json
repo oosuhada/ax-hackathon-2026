@@ -1,0 +1,183 @@
+{
+  "_meta": {
+    "description": "FOMO 방어 에이전트용 가상 또래 벤치마크 데이터 [SYNTHETIC]",
+    "compliance_note": "이 데이터는 실제 고객 데이터가 아닌 100% 합성 시뮬레이션 데이터입니다. 절대 특정 개인의 정보가 아닙니다."
+  },
+  "peer_groups": [
+    {
+      "group_profile": {
+        "age_band": "20s",
+        "asset_band": "under_10m",
+        "risk_tolerance": "aggressive"
+      },
+      "market_sentiment_reaction": "BUY_FRACTIONAL",
+      "peer_hold_ratio_percent": 65,
+      "preferred_safe_action": "weekly_fractional_saving",
+      "fomo_trigger_keywords": ["테슬라", "코인", "비트코인", "떡상"],
+      "roi_metric_link": {
+        "deflection_score": 0.68,
+        "conversion_to_safe_action": 0.32,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "20s",
+        "asset_band": "under_10m",
+        "risk_tolerance": "moderate"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 78,
+      "preferred_safe_action": "monthly_fractional_saving",
+      "fomo_trigger_keywords": ["급등", "테슬라", "다들 산다", "뒤처진다"],
+      "roi_metric_link": {
+        "deflection_score": 0.82,
+        "conversion_to_safe_action": 0.15,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "20s",
+        "asset_band": "10m_to_50m",
+        "risk_tolerance": "moderate"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 82,
+      "preferred_safe_action": "monthly_fractional_saving",
+      "fomo_trigger_keywords": ["성장주", "떡상", "풀매수", "레버리지"],
+      "roi_metric_link": {
+        "deflection_score": 0.84,
+        "conversion_to_safe_action": 0.14,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "30s",
+        "asset_band": "under_10m",
+        "risk_tolerance": "moderate"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 85,
+      "preferred_safe_action": "suitability_test_and_robo_advisor",
+      "fomo_trigger_keywords": ["내집마련", "영끌", "갭투자", "급등"],
+      "roi_metric_link": {
+        "deflection_score": 0.86,
+        "conversion_to_safe_action": 0.12,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "30s",
+        "asset_band": "10m_to_50m",
+        "risk_tolerance": "conservative"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 88,
+      "preferred_safe_action": "bond_etf_diversification",
+      "fomo_trigger_keywords": ["안전자산", "채권", "예적금", "원금보장"],
+      "roi_metric_link": {
+        "deflection_score": 0.90,
+        "conversion_to_safe_action": 0.20,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "30s",
+        "asset_band": "50m_to_100m",
+        "risk_tolerance": "aggressive"
+      },
+      "market_sentiment_reaction": "BUY_FRACTIONAL",
+      "peer_hold_ratio_percent": 72,
+      "preferred_safe_action": "monthly_fractional_saving",
+      "fomo_trigger_keywords": ["풀매수", "몰빵", "레버리지", "선물"],
+      "roi_metric_link": {
+        "deflection_score": 0.72,
+        "conversion_to_safe_action": 0.28,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "40s",
+        "asset_band": "50m_to_100m",
+        "risk_tolerance": "conservative"
+      },
+      "market_sentiment_reaction": "CONSERVATIVE_HOLD",
+      "peer_hold_ratio_percent": 91,
+      "preferred_safe_action": "bond_etf_diversification",
+      "fomo_trigger_keywords": ["노후대비", "안정적", "배당주", "원금보장"],
+      "roi_metric_link": {
+        "deflection_score": 0.92,
+        "conversion_to_safe_action": 0.10,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "40s",
+        "asset_band": "over_100m",
+        "risk_tolerance": "moderate"
+      },
+      "market_sentiment_reaction": "HOLD",
+      "peer_hold_ratio_percent": 87,
+      "preferred_safe_action": "dividend_etf_accumulation",
+      "fomo_trigger_keywords": ["배당", "리밸런싱", "자산배분", "글로벌ETF"],
+      "roi_metric_link": {
+        "deflection_score": 0.88,
+        "conversion_to_safe_action": 0.12,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    },
+    {
+      "group_profile": {
+        "age_band": "50s",
+        "asset_band": "over_100m",
+        "risk_tolerance": "conservative"
+      },
+      "market_sentiment_reaction": "CONSERVATIVE_HOLD",
+      "peer_hold_ratio_percent": 93,
+      "preferred_safe_action": "pension_rebalance",
+      "fomo_trigger_keywords": ["연금", "퇴직", "안전", "국채"],
+      "roi_metric_link": {
+        "deflection_score": 0.94,
+        "conversion_to_safe_action": 0.08,
+        "compliance_defense_flag": true
+      },
+      "source": "[SYNTHETIC] 금융투자협회 2025 투자자 성향 보고서 기반 가공",
+      "note": "[SYNTHETIC] 실서비스에서는 마이데이터 API 기반 실시간 데이터로 대체"
+    }
+  ],
+  "profiles": [
+    {
+      "age_band": "all",
+      "asset_band": "all",
+      "risk_tolerance": "all",
+      "market_sentiment_reaction": "보수적 관망(Conservative Hold)",
+      "peer_hold_ratio_percent": 80,
+      "preferred_safe_action": "suitability_test_and_robo_advisor",
+      "fomo_trigger_keywords": ["급등", "풀매수", "영끌"],
+      "source": "[SYNTHETIC] 전체 평균 Fallback 프로필",
+      "note": "[SYNTHETIC] 어떤 세그먼트에도 매칭되지 않는 사용자를 위한 기본값"
+    }
+  ]
+}
