@@ -1,0 +1,7 @@
+{
+  "name": "ceo-issue-judge-agent",
+  "description": "AI가 데이터의 행간을 읽고 객관적 SOP 근거 기반의 판독 리포트를 생성하여 C-레벨 경영진의 의사결정을 돕는 에이전트입니다.",
+  "version": "1.0.0",
+  "author": "삼일PwC AX팀",
+  "skills": "./skills/"
+}
