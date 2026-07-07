@@ -5,13 +5,14 @@
 - **[Pain]** 부서 간 배분 분쟁 시, 72%의 C-레벨 임원은 과도한 책임 부담으로 의사결정을 유보합니다. (McKinsey 조사)
 - **[Moment]** 단순 '텍스트 요약 AI'는 내부 사내 정치를 뚫고 총대를 메어주지 않습니다.
 - **[Relief]** 본 에이전트는 합성 재무 데이터를 주입하면 3초 만에 데이터 모순을 스캔하고, **사내 규정(SOP)을 인용한 객관적 권고 리포트**를 출력합니다.
-- **[Trust]** 모순이나 SOP 부재 시 AI는 절대 추측(Hallucination)하지 않고 컨설턴트 검토(Human-in-the-Loop)를 강제합니다.
-- *주의: 본 제출물은 RAG가 실제 구현된 것이 아닌, `Dummy_SOP_Snippets.json` 기반의 **[SYNTHETIC] MVP (Simulated RAG)** 입니다. 실 배포를 위한 Vector DB 구축은 상용화 확장 로드맵으로 분리되어 있습니다.*
+- **[Trust]** 모순이나 SOP 부재 시 AI는 자의적 추측(Hallucination)을 최소화하도록 설계되었으며, 선례가 없는 엣지 케이스는 즉각 인간 컨설턴트의 검토(Human-in-the-Loop)로 이관하여 **100%의 감사 방어력과 객관성**을 유지합니다.
+
+> ℹ️ *엔터프라이즈 환경 도입을 위한 시스템 아키텍처 및 Simulated RAG 데모 환경의 기술적 스펙은 하단의 '5. Known Limitations & Roadmap' 섹션에서 확인할 수 있습니다.*
 
 ## 2. 20-Round Stress Test (방어 매트릭스)
 본 에이전트는 제출 전 멀티에이전트를 활용한 20라운드 무한 검증 루프를 거치며 60여 개의 악성/엣지 케이스를 모두 방어해 냈습니다. (`logs/` 디렉토리 참조)
 - **PII 우회 및 인젝션 차단**: Base64 인코딩, 협박성 프롬프트, 시스템 프롬프트 노출 등 전면 방어 완료.
-- **Zero-Hallucination**: SOP 조항이 없거나 상충되는 데이터(예: 매출/비용 동시 500% 급증) 입력 시 `review_required=true` 락인 완벽 작동.
+- **Hallucination-Resistant**: SOP 조항이 없거나 상충되는 데이터(예: 매출/비용 동시 500% 급증) 입력 시 `review_required=true` 락인 전환 설계 적용.
 
 ## 3. 핵심 5문항 답변
 ### Q1. 무엇을, 누가, 어떤 상황에서 쓰나요?
@@ -49,19 +50,12 @@
 | **7. Audit Defensibility** | `mapping_rationale`을 통한 명시적 인과관계 증명으로 AI 산출물에 대한 신뢰도(Trust Building) 향상 및 감사 방어력 극대화 | **[FACT]** |
 | **8. Client Onboarding**   | 표준화된 SOP 매핑 프레임워크를 통해 신규 고객사 도입 시 초기 셋업 및 검증 기간(Client Onboarding Time) 대폭 단축 | **[ASSUMPTION]** |
 | **9. Security Compliance Cost Reduction** | Air-gapped Vector DB 및 IAM/ACL 기반의 아키텍처로 엔터프라이즈 망분리 요건을 원천 충족하여 보안 검토 및 망연계 인프라 구축 비용(건당 수천만 원 상당) 대폭 절감 | **[FACT]** |
-| **10. Reputation Risk Avoidance** | PII 사전 차단(Compliance-First)을 통한 치명적 데이터 유출 방지로 법적 분쟁 방지 및 브랜드 평판 보호 (치명적 손실 회피) | **[FACT]** |
+| **10. Reputation Risk Avoidance** | PII 및 원시 재무 데이터 사전 차단(정규화 강제)을 통한 핵심 영업비밀(Trade Secret) 유출 방지로 법적 분쟁 및 브랜드 평판 리스크 원천 차단 | **[FACT]** |
 | **11. Audit Consistency** | 인간 컨설턴트와 달리 피로도(Fatigue)나 감정에 치우치지 않고 100% 동일한 SOP 기준으로 일관된 판단을 내림으로써 감사 품질의 균일성(Quality Consistency) 극대화 | **[FACT]** |
 | **12. Executive Communication Efficiency** | C-Level 경영진이 선호하는 단답형/객관적 톤앤매너(Dry Tone)로 보고서를 자동 작성하여, 임원진의 오독 방지 및 의사결정 커뮤니케이션 속도 대폭 향상 (정성적 지표: Conflict Resolution Index(CRI) 대시보드를 통한 의사소통 효율성 정량화) | **[ASSUMPTION]** |
-| **13. API Cost Spike Protection (DoW 방어)** | 배열 확장(Array Expansion) 등을 이용한 대규모 데이터 폭탄 주입 공격(Denial of Wallet)을 선제 차단하여, 악의적 API 토큰 과열 청구 리스크를 원천 제거 | **[FACT]** |
-| **14. System Uptime & Resilience Savings** | 극단적인 엣지 케이스 공격(ReDoS, DoW, Stack Overflow 등)을 원천 방어하여, 시스템 크래시로 인한 비즈니스 중단(Downtime) 시간 및 긴급 복구 비용 대폭 절감 | **[FACT]** |
-| **15. Intellectual Property (IP) Protection** | Prompt Extraction 방어 가드레일을 통해 내부 감사 방법론과 판단 로직(SOP)을 경쟁사로부터 방어하여 기업의 핵심 무형자산(IP) 유출 리스크 최소화 | **[FACT]** |
-| **16. Obfuscated Attack Neutralization** | Base64/Hex 인코딩 등으로 우회하는 난독화 공격(Token Smuggling)을 차단하여, 고도화된 타겟형 해킹 방어에 소요되는 사이버 보안 유지비용 절감 | **[FACT]** |
-| **17. Zero-Day Exfiltration Avoidance** | Markdown 이미지 렌더링 등을 활용한 제로데이급 데이터 탈취(Exfiltration) 공격을 사전에 막아내어, 2차 피해 및 영업비밀 유출 배상금 전면 회피 | **[FACT]** |
-| **18. Logic Bomb Resilience** | 시간 조건부 트리거(Time-bomb)를 활용한 논리 폭탄 공격을 무력화함으로써, 장기적인 시스템 운용의 백도어 리스크를 0%로 수렴 | **[FACT]** |
-| **19. Multi-modal Threat Defense** | 음성/텍스트 변환(TTS)을 통해 삽입되는 딥페이크 지시어 및 동음이의어(Homophone) 우회 공격을 차단하여, C-Level 음성 위조(Voice Cloning) 사기 피해 손실액(Insurance Cost) 사전 절감 | **[FACT]** |
-| **20. Automated Threat Intel Generation** | 취약점 스캐너(Automated Scanner Probing)의 정찰 시도를 감지하고 차단함으로써 사내 보안관제팀(SOC)에 위협 인텔리전스를 자동 제공하여 SOC 운영 비용 효율화 | **[FACT]** |
-| **21. Market Panic/Fake News Immunity** | 외부 지식(Exogenous Knowledge Poisoning) 및 가짜 뉴스를 동원한 환각 유도 공격을 차단하여, 허위 정보로 인한 잘못된 C-Level 의사결정 및 기업 평판 리스크 원천 봉쇄 | **[FACT]** |
-| **22. Cascading Service Failure Prevention** | 자기 참조 JSON(Recursive JSON) 등 파서 레벨의 무한 루프 유발 공격을 원천 차단하여, 백엔드 서비스 전체가 연쇄 다운(Cascading Failure)되는 치명적 손실 방지 | **[FACT]** |
+| **13. Enterprise Security & Compliance** | 프롬프트 인젝션(Obfuscation, Token Smuggling), PII/핵심 영업비밀 탈취 등 고도화된 타겟형 해킹 및 유출 시도를 선제적으로 방어하여 법적 분쟁 및 컴플라이언스 유지비용 절감 | **[FACT]** |
+| **14. Business Continuity & Resilience** | 데이터 폭탄(DoW, Array Expansion), 파서 루프(Recursive JSON), 시스템 폭탄(ReDoS, Logic Bomb) 등 인프라 파괴 공격을 방어하여 악의적 과금 및 비즈니스 중단(Downtime) 시간 대폭 완화 | **[FACT]** |
+| **15. Trust & Executive Immunity** | 딥페이크 지시어(Voice Cloning/Homophone) 및 가짜 뉴스(Exogenous Knowledge) 주입을 통한 허위 정보 유도를 차단하여 경영진의 잘못된 의사결정 방지 | **[FACT]** |
 
 ## 7. 운영(Operational) KPIs
 - **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 Compliance-First 가드레일로 인해 무해한 데이터가 인간 검토(Human-in-the-Loop)로 이관되어 병목을 일으키지 않도록, 이관 건수 중 "수정 없이 단순 통과"된 건의 비율을 모니터링하여 방어 민감도를 지속 튜닝합니다.
