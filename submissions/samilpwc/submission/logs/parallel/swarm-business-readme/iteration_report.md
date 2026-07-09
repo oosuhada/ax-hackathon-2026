@@ -37,3 +37,43 @@
 - Why not 100: 프롬프트 인젝션 및 난독화 공격 등에 대한 보안 감사(Security Audit) 결과의 가시성 부족
 - Next round focus: 보안 컴플라이언스 측면(data-privacy-scrubber)을 강조하여 엣지 케이스 테스트 매트릭스 구체화
 
+
+## Iteration 1 - 2026-07-09T22:45:57+09:00
+
+### Business Focus
+- README 5문항 답변 강화 및 ROI 산식/토큰 비용 구체화
+- Disclaimer(책임 한계 분리) 섹션 추가 및 과장된 RAG 표현 수정
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 심사위원 반박 질문 3개, 피치 개선 권고, 점수(80점) |
+| roi-architect | 토큰 비용 산식 누락 지적 및 ROI 레이블 검증 |
+| compliance-lawyer | 책임 부인(Disclaimer) 추가 및 RAG 과장 표현 하향 조정 |
+| data-privacy-scrubber | 민감 정보 노출 없음 확인 (Clean) |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-1 | 단순 Dummy JSON 매핑만으로 복잡한 SOP 상충을 해결할 수 있나? | Simulated RAG 기술 한계 의구심 | 검색 기술 자체보다 'SOP 근거 부재 시 Human Review 강제 이관'이라는 의사결정 책임 분산 구조가 작동함을 증명 |
+| JO-2 | 토큰 유지 비용과 통합 비용을 넘어서는 ROI 산식이 있는가? | 비즈니스 ROI 현실성 결여 | 주니어 컨설턴트 1건 리서치 비용 800만원 대비 토큰 비용 2000원으로 3,600배 효율 증명 |
+| JO-3 | 민감 정보 감지 시 분석 중단은 업무 마비를 초래하지 않나? | Compliance-First 부작용 | 정상 재승인 비율(False Positive Escalation Rate) 모니터링을 통한 적응형 시스템으로 점진적 임계치 완화 운영 |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| High | Token Cost 누락 및 FACT 오남용 | README.md | ROI 1번 항목에 토큰 비용 추가 및 FACT를 ASSUMPTION으로 수정 |
+| High | 기술 실증 한계 노출 단어 사용 | README.md | Pitch에서 Simulated/Dummy 제외, Known Limitations로 이동 |
+| Critical | 책임 한계 및 법적 방어막 부재 | README.md | Disclaimer(책임 부인) 및 최종 결정권 고객사 귀속 명시 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | Q2 McKinsey 인용 추가, Q3 작동방식 Flow 시각화, Q5 방어사례 강조 | 설득력 및 신뢰도 향상 |
+| README.md | ROI 정량화 및 토큰 비용 추가 | roi-architect 권고사항 반영 |
+| README.md | Disclaimer 섹션 신설 | compliance-lawyer 권고사항 반영 (법적/재무적 리스크 차단) |
+
+### Judge Score
+- Score: 80
+- Why not 100: 비즈니스 ROI 섹션이 22개 항목으로 과도하게 나열되어 핵심이 희석되며, Simulated RAG 단계로 기술적 실증이 약함 (수정 전 기준)
+- Next round focus: 실제 Vector DB 연동 시뮬레이션 강화 및 ROI 항목 7축으로 완전 압축
