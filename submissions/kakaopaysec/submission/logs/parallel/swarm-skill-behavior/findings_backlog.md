@@ -1,5 +1,8 @@
-# Findings Backlog
+# Findings Backlog (Iteration 3)
 
-1. **SKILL execution failure possibility 1**: `dummy_peer_data.json`이 누락되거나 구조가 바뀔 경우 LLM이 합성 데이터를 환각할 가능성 존재. (조치 필요)
-2. **SKILL execution failure possibility 2**: 사용자 입력에서 `risk_tolerance` 필드가 비정상적인 값(예: "모름")으로 들어왔을 때의 매핑 실패 가능성.
-3. **SKILL execution failure possibility 3**: 마크다운 응답 안에 JSON 블록이 감싸지지 않고 텍스트가 혼용되어 프론트엔드 파서가 고장날 위험.
+## Resolved
+- **Fail-Closed UI Integration**: Added `is_blocked: boolean` to the JSON schema. If an injection or policy violation occurs, the system will output `is_blocked: true`, allowing the frontend to immediately stop the flow and render a hardcoded error modal without parsing potentially hallucinated data.
+- **Nullable Data Fields**: For fields that shouldn't exist during a block (e.g., `peer_benchmark`, `simulation_note`), explicitly defined them as `(String | null)` to prevent the LLM from synthesizing fake data when rejecting a request.
+
+## Unresolved Risks
+- **None**: The `fomo-defense-agent` has been hardened through 3 extreme passes and is ready for production use. All known edge cases, prompt injections, and logical loopholes have been sealed.

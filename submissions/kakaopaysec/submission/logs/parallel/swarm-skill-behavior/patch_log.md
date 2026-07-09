@@ -1,6 +1,8 @@
-# Patch Log
+# Patch Log (Iteration 3)
 
-- `src/skills/fomo-defense-agent/SKILL.md`:
-  - 5-Step Reassurance Flow의 5번째 단계를 "안심/적합성 조치 및 후속 안내"로 변경하고, 어떠한 투자도 권유하지 않도록 가드레일 강화.
-  - "자산 기반 차별 금지" 조항에서 "안전 자산 라우팅" 단어 제거.
-  - 출력 포맷의 `show_safe_routing_button`과 `system_fallback_message`에 `Optional` 명시 추가.
+## Chunk 1: Robust Fail-Closed Schema
+- Introduced `"is_blocked": false` as a boolean flag.
+- Modified `peer_benchmark`, `simulation_note`, and `next_safe_action` to be `(String | null)` when `is_blocked` is true.
+
+## Chunk 2: YAML Handoff Update
+- Added `is_blocked` to the `output_schema` list in the `handoff` block to ensure downstream QA agents are aware of the new field.
