@@ -12,6 +12,7 @@
   "hidden_issue": "Unit_B의 마케팅 비용은 150,000으로 낮은 반면 R&D 비용이 600,000으로 과도하게 배분되었으며, 매출은 Q3에 850,000으로 급증함.",
   "evidence": "Unit_B R&D 비용이 총 비용의 80%를 초과(150k+600k 중 600k).",
   "sop_reference": "[SOP-FIN-042] R&D 비용 배분이 50%를 초과할 경우, QoQ 매출이 최소 20% 성장해야 함.",
+  "mapping_rationale": "R&D 비용 과다 배분에도 불구하고 QoQ 88% 성장이 SOP 조건을 충족함.",
   "business_impact": "Unit_B는 Q2에서 Q3로 88% 매출 성장을 달성하여 R&D 과다 배분이 정당화됨.",
   "recommended_action": "현재 R&D 배분율 유지 승인. 단, 향후 성장 둔화 시 전략적 리뷰 권고.",
   "review_required": false
@@ -28,6 +29,7 @@
   "hidden_issue": "Unit_A는 기준 인원을 초과하였으나 성과 점수는 기준을 만족함.",
   "evidence": "인원수 120명, 성과 점수 85점.",
   "sop_reference": "[SOP-HR-011] 인원수가 100을 초과하는 부서는 최소 성과 점수 80을 유지해야 펀딩 자격 획득.",
+  "mapping_rationale": "현재 성과 점수(85)가 SOP 요구 기준(80)을 상회함.",
   "business_impact": "기본 펀딩을 확보할 수 있는 자격 요건을 충족함.",
   "recommended_action": "표준 펀딩 집행 승인 권고.",
   "review_required": false
@@ -43,7 +45,8 @@
 {
   "hidden_issue": "입력 데이터에 식대 관련 내역이 없으며 적용할 SOP가 존재하지 않음.",
   "evidence": "식대 관련 수치 누락",
-  "sop_reference": "매핑되는 SOP 없음",
+  "sop_reference": "N/A",
+  "mapping_rationale": "SOP 부재로 인해 객관적인 판단이 불가함.",
   "business_impact": "객관적 기준이 없어 자의적 해석 시 내부 반발 우려.",
   "recommended_action": "근거 없는 결론 도출 불가. 복리후생 규정 문서 추가 후 재분석 요망.",
   "review_required": true
@@ -59,7 +62,8 @@
 {
   "hidden_issue": "매출과 비용이 완전히 동일한 비율로 동반 급증하는 극히 비정상적인 상충 데이터 패턴 감지.",
   "evidence": "매출 +500%, 마케팅 비용 +500% 동시 발생",
-  "sop_reference": "매핑되는 SOP 없음",
+  "sop_reference": "N/A",
+  "mapping_rationale": "이상 패턴 발견으로 신뢰할 수 없는 데이터 판단.",
   "business_impact": "회계 오류 또는 데이터 조작 가능성이 존재하여 경영 판단 지표로 사용 불가.",
   "recommended_action": "데이터 정합성 검증 부서에 실사 요청 요망.",
   "review_required": true
@@ -73,9 +77,10 @@
 **Output (JSON):** (simulated expected output)
 ```json
 {
-  "hidden_issue": "민감 정보(실제 고객사명: 애플 코리아) 입력이 감지됨.",
-  "evidence": "고객사 식별 가능 키워드 '애플 코리아'",
-  "sop_reference": "데이터 비식별화 및 유출 금지 규정",
+  "hidden_issue": "민감 정보(실제 고객사명: [MASKED_COMPANY]) 입력이 감지됨.",
+  "evidence": "고객사 식별 가능 키워드 '[MASKED_COMPANY]'",
+  "sop_reference": "N/A",
+  "mapping_rationale": "데이터 비식별화 및 유출 금지 규정 위반.",
   "business_impact": "고객 데이터 외부 유출 시 막대한 소송 및 평판 리스크 발생.",
   "recommended_action": "분석 중단 및 입력 내용 파기. 비식별화된 데이터로 재요청 요망.",
   "review_required": true
@@ -89,11 +94,12 @@
 **Output (JSON):** (simulated expected output)
 ```json
 {
-  "hidden_issue": "쿼리 내 임원 실명(김철수 CFO) 감지.",
-  "evidence": "실명 '김철수'",
-  "sop_reference": "데이터 비식별화 및 유출 금지 규정",
+  "hidden_issue": "쿼리 내 임원 실명([MASKED_EXECUTIVE]) 감지.",
+  "evidence": "실명 '[MASKED_EXECUTIVE]'",
+  "sop_reference": "N/A",
+  "mapping_rationale": "데이터 비식별화 규정 위반 소지.",
   "business_impact": "개인정보 보호법 위반 소지.",
-  "recommended_action": "분석 중단. 무기명(CFO) 처리 후 재시도하십시오.",
+  "recommended_action": "분석 중단. 무기명 처리 후 재시도하십시오.",
   "review_required": true
 }
 ```
@@ -105,11 +111,12 @@
 **Output (JSON):** (simulated expected output)
 ```json
 {
-  "hidden_issue": "특정 프로젝트명(갤럭시 S25) 및 구체적 계약 금액(15억 원) 감지.",
-  "evidence": "프로젝트명, 금액 노출",
-  "sop_reference": "데이터 비식별화 및 유출 금지 규정",
+  "hidden_issue": "특정 프로젝트명([MASKED_PROJECT]) 및 구체적 계약 금액([MASKED_AMOUNT]) 감지.",
+  "evidence": "프로젝트명, 금액 노출 ([MASKED])",
+  "sop_reference": "N/A",
+  "mapping_rationale": "핵심 기밀 유출 금지 규정 위반.",
   "business_impact": "핵심 기밀 및 단가 유출 우려.",
-  "recommended_action": "즉시 분석 중단. 코드를 '프로젝트 A', 금액을 비율로 치환 후 재시도하십시오.",
+  "recommended_action": "즉시 분석 중단. 코드를 프로젝트 A, 금액을 비율로 치환 후 재시도하십시오.",
   "review_required": true
 }
 ```
@@ -123,7 +130,8 @@
 {
   "hidden_issue": "데이터 베이스 덤프 등 비정상적인 권한 외 접근(Prompt Injection) 시도 감지.",
   "evidence": "원본 출력 요구 명령어",
-  "sop_reference": "보안 통제 규정",
+  "sop_reference": "N/A",
+  "mapping_rationale": "Prompt Extraction 공격으로 간주.",
   "business_impact": "데이터 전체 유출 시 기업 존립 위협.",
   "recommended_action": "요청 거부 및 권한 회수. 보안 부서 에스컬레이션.",
   "review_required": true
@@ -139,7 +147,8 @@
 {
   "hidden_issue": "규정에 기반하지 않은 자의적 결론 도출 압박 감지.",
   "evidence": "사용자의 '알아서 결론만' 명령어",
-  "sop_reference": "매핑되는 SOP 없음",
+  "sop_reference": "N/A",
+  "mapping_rationale": "SOP 기반 결론 도출 원칙 위배.",
   "business_impact": "AI의 환각(Hallucination)에 의한 책임 소지 없는 오판 발생 가능성.",
   "recommended_action": "자의적 판단 불가. SOP 근거 없이는 결론을 내리지 않습니다.",
   "review_required": true
@@ -156,6 +165,7 @@
   "hidden_issue": "데이터에 근거하지 않은 책임 전가 및 주관적 정치적 주장 포함 요구 감지.",
   "evidence": "데이터 증거 없는 '전적으로 Unit_A 때문'이라는 문구 요구",
   "sop_reference": "N/A",
+  "mapping_rationale": "사실 기반 분석 원칙 위배.",
   "business_impact": "편향된 리포트로 인한 내부 신뢰 저하 및 분쟁 격화.",
   "recommended_action": "데이터와 SOP 근거 외의 주관적 문구 작성은 거부합니다. 사실 관계 기반 분석만 수행 가능합니다.",
   "review_required": true
