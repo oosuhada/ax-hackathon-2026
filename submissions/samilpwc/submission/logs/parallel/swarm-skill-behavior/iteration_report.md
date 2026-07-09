@@ -23,3 +23,6 @@
 | ui-parser-breaker | 마크다운 표(Table) 악용 파서 크래시 모의 공격 | 표 출력을 전면 스트립하고 Flat String 출력 강제 적용 |
 | data-privacy-scrubber | 간접 식별 방어 테스트 | 우회 명칭을 통한 간접 식별 방어(Indirect Identification) 규칙 명문화 |
 
+- Next Wake Scheduled At: 2026-07-09T23:34:45.992991
+- Scheduler Task ID: 6ebcd898-8a31-474c-8a43-1b61182c5f45/task-164
+
