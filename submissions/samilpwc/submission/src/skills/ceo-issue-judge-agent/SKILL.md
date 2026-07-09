@@ -96,7 +96,9 @@ C-Level 경영진(UX)과 시스템 파서(JSON Fallback) 모두를 만족시키�
   "mapping_rationale": "수치적 증거와 SOP 조항 사이의 인과관계 1문장 증명 (Explainability 보장)",
   "compliance_risk_level": "해당 이슈가 미치는 규제/비즈니스 파급 리스크 (High/Medium/Low)",
   "required_audit_action": "SOP 규정에 의거한 구속력 있는 후속 조치 (SOP 부재 시 'Human-Review Required' 판정)",
-  "review_required": false // 반드시 boolean 값(true/false)을 사용. 문자열 "true" 금지. 보안 위반으로 인한 차단 시 business_impact에 "Compliance/Security Risk"를 명시할 것.
+  "business_impact": "해당 이슈가 미치는 비즈니스적 파급력",
+  "review_required": false, // 반드시 boolean 값(true/false)을 사용. 문자열 "true" 금지.
+  "disclaimer": "본 리포트는 AI 기반 예비 분석 결과이며, 공식적인 회계감사나 법적 자문을 대체하지 않습니다."
 }
 ```
 
@@ -111,7 +113,7 @@ handoff:
   required_inputs:
     - Dummy_Business_Data.json
     - Dummy_SOP_Snippets.json
-  output_schema: "hidden_issue, evidence, sop_reference, mapping_rationale, compliance_risk_level, required_audit_action, review_required"
+  output_schema: "hidden_issue, evidence, sop_reference, mapping_rationale, compliance_risk_level, required_audit_action, business_impact, review_required, disclaimer"
   validation_command: "20-Round Iterative Loop (60 Attack Cases Passed)"
   unresolved_risks:
     - 상용화를 위한 RAG/온프레미스 연동은 MVP 범위를 벗어나므로 별도 로드맵으로 관리해야 함.
