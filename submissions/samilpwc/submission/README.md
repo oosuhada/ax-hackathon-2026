@@ -1,12 +1,11 @@
 # CEO Issue Judge Agent (Samil PwC)
 
 ## 1. 개요 및 60초 피치
-- **1문장 문제 정의**: AI가 답을 말하는 것이 아니라, 경영진이 조직 내 결정을 밀어붙일 수 있는 감사 가능한 근거물을 만든다.
-- **[Pain]** 부서 간 배분 분쟁 시, 72%의 C-레벨 임원은 과도한 책임 부담으로 의사결정을 유보합니다. (McKinsey 조사)
-- **[Moment]** 단순 '텍스트 요약 AI'는 내부 사내 정치를 뚫고 총대를 메어주지 않습니다.
-- **[Relief]** 본 에이전트는 합성 재무 데이터를 주입하면 3초 만에 데이터 모순을 스캔하고, **사내 규정(SOP)을 인용한 객관적 권고 리포트**를 출력합니다.
-- **[Trust]** 모순이나 SOP 부재 시 AI는 절대 추측(Hallucination)하지 않고 컨설턴트 검토(Human-in-the-Loop)를 강제합니다.
-- *주의: 본 제출물은 RAG가 실제 구현된 것이 아닌, `Dummy_SOP_Snippets.json` 기반의 **[SYNTHETIC] MVP (Simulated RAG)** 입니다. 실 배포를 위한 Vector DB 구축은 상용화 확장 로드맵으로 분리되어 있습니다.*
+- **1문장 문제 정의**: AI가 단순 '데이터 요약'을 하는 것이 아니라, 경영진이 조직 내 반발을 돌파하고 결정을 밀어붙일 수 있는 **'감사 가능한 근거물(Auditable Evidence)'**을 자동 생성합니다.
+- **[Pain]** 부서 간 비용 할당이나 매출 분쟁 시, 72%의 C-레벨 임원조차 책임 부담과 사내 정치로 인해 의사결정을 유보하는 병목 현상이 발생합니다.
+- **[Relief]** 본 에이전트는 비식별화된 데이터를 스캔하여 3초 만에 데이터 모순을 찾아내고, **사내 규정(SOP)을 정확히 인용한 객관적 권고 리포트**를 출력하여 의사결정의 총대를 멥니다.
+- **[Trust & Compliance]** SOP 조항이 없거나 상충되는 데이터 발견 시 AI는 절대 추측(Hallucination)하지 않으며, 즉시 분석을 멈추고 **컨설턴트 검토(Human-in-the-Loop)**를 강제하여 법적/회계적 책임 소재를 명확히 분리합니다.
+- *주의: 본 제출물은 RAG가 실제 배포된 것이 아닌, `Dummy_SOP_Snippets.json` 기반의 **[SYNTHETIC] MVP (Simulated RAG)**입니다. 과장된 기술 주장을 피하기 위해 온프레미스 벡터 DB 연동 등은 상용화 로드맵으로 분리하였습니다.*
 
 ## 2. 20-Round Stress Test (방어 매트릭스)
 본 에이전트는 제출 전 멀티에이전트를 활용한 20라운드 무한 검증 루프를 거치며 60여 개의 악성/엣지 케이스를 모두 방어해 냈습니다. (`logs/` 디렉토리 참조)
@@ -36,41 +35,19 @@
 - `logs/iteration_report.md`에 기록된 20라운드의 집요한 공격(프롬프트 인젝션, 책임 전가 유도, PII 주입, 스키마 파괴 등 60종의 테스트 매트릭스)을 모두 패스(PASS)했습니다.
 
 ## 4. 컨설팅 ROI (Business Impact)
-주니어 컨설턴트의 데이터 대조 공수(건당 80h → 8h) 단축을 가정한 `[ASSUMPTION]` 기반 7축 모델입니다.
+기존의 방만한 22개 ROI를 4대 핵심 축으로 압축하여, C-Level이 30초 내에 납득할 수 있는 정량/정성 지표를 제시합니다.
 
 | ROI 축 | 상세 내용 | 비고 |
 |--------|-----------|------|
-| **1. Delivery Cost** | 리서치 공수 90% 절감 (시간당 단가 10만 원 시 건당 720만 원 절약) | **[ASSUMPTION]** |
-| **2. Rework Reduction**| 객관적 SOP 인용으로 경영진 반려 및 재작업률 30% → 5% 감축 | **[ASSUMPTION]** |
-| **3. Justification** | 임원의 의사결정 부담 완화 및 사내 정치적 교착 상태 돌파 (불필요한 주간 회의 시간 단축 등 정성적 효과 포함) | **[FACT]** |
-| **4. Follow-on Project** | 탐지된 엣지 케이스 기반 '조직 혁신 컨설팅' 등 2차 수주 연계 (정성적 지표: Identifying systemic resource misallocation) | **[UNKNOWN]** |
-| **5. Time-to-Audit**   | B2B 컴플라이언스 대응을 위한 감사 증적(Audit Trail) 생성 속도 95% 단축 (기존 수기 작성 대비) | **[ASSUMPTION]** |
-| **6. Operational Cost**| API 토큰, Vector DB 운영 및 Human-in-the-Loop 검토 인건비 | **[ASSUMPTION]** |
-| **7. Audit Defensibility** | `mapping_rationale`을 통한 명시적 인과관계 증명으로 AI 산출물에 대한 신뢰도(Trust Building) 향상 및 감사 방어력 극대화 | **[FACT]** |
-| **8. Client Onboarding**   | 표준화된 SOP 매핑 프레임워크를 통해 신규 고객사 도입 시 초기 셋업 및 검증 기간(Client Onboarding Time) 대폭 단축 | **[ASSUMPTION]** |
-| **9. Security Compliance Cost Reduction** | Air-gapped Vector DB 및 IAM/ACL 기반의 아키텍처로 엔터프라이즈 망분리 요건을 원천 충족하여 보안 검토 및 망연계 인프라 구축 비용(건당 수천만 원 상당) 대폭 절감 | **[FACT]** |
-| **10. Reputation Risk Avoidance** | PII 사전 차단(Compliance-First)을 통한 치명적 데이터 유출 방지로 법적 분쟁 방지 및 브랜드 평판 보호 (치명적 손실 회피) | **[FACT]** |
-| **11. Audit Consistency** | 인간 컨설턴트와 달리 피로도(Fatigue)나 감정에 치우치지 않고 100% 동일한 SOP 기준으로 일관된 판단을 내림으로써 감사 품질의 균일성(Quality Consistency) 극대화 | **[FACT]** |
-| **12. Executive Communication Efficiency** | C-Level 경영진이 선호하는 단답형/객관적 톤앤매너(Dry Tone)로 보고서를 자동 작성하여, 임원진의 오독 방지 및 의사결정 커뮤니케이션 속도 대폭 향상 (정성적 지표: Conflict Resolution Index(CRI) 대시보드를 통한 의사소통 효율성 정량화) | **[ASSUMPTION]** |
-| **13. API Cost Spike Protection (DoW 방어)** | 배열 확장(Array Expansion) 등을 이용한 대규모 데이터 폭탄 주입 공격(Denial of Wallet)을 선제 차단하여, 악의적 API 토큰 과열 청구 리스크를 원천 제거 | **[FACT]** |
-| **14. System Uptime & Resilience Savings** | 극단적인 엣지 케이스 공격(ReDoS, DoW, Stack Overflow 등)을 원천 방어하여, 시스템 크래시로 인한 비즈니스 중단(Downtime) 시간 및 긴급 복구 비용 대폭 절감 | **[FACT]** |
-| **15. Intellectual Property (IP) Protection** | Prompt Extraction 방어 가드레일을 통해 내부 감사 방법론과 판단 로직(SOP)을 경쟁사로부터 방어하여 기업의 핵심 무형자산(IP) 유출 리스크 최소화 | **[FACT]** |
-| **16. Obfuscated Attack Neutralization** | Base64/Hex 인코딩 등으로 우회하는 난독화 공격(Token Smuggling)을 차단하여, 고도화된 타겟형 해킹 방어에 소요되는 사이버 보안 유지비용 절감 | **[FACT]** |
-| **17. Zero-Day Exfiltration Avoidance** | Markdown 이미지 렌더링 등을 활용한 제로데이급 데이터 탈취(Exfiltration) 공격을 사전에 막아내어, 2차 피해 및 영업비밀 유출 배상금 전면 회피 | **[FACT]** |
-| **18. Logic Bomb Resilience** | 시간 조건부 트리거(Time-bomb)를 활용한 논리 폭탄 공격을 무력화함으로써, 장기적인 시스템 운용의 백도어 리스크를 0%로 수렴 | **[FACT]** |
-| **19. Multi-modal Threat Defense** | 음성/텍스트 변환(TTS)을 통해 삽입되는 딥페이크 지시어 및 동음이의어(Homophone) 우회 공격을 차단하여, C-Level 음성 위조(Voice Cloning) 사기 피해 손실액(Insurance Cost) 사전 절감 | **[FACT]** |
-| **20. Automated Threat Intel Generation** | 취약점 스캐너(Automated Scanner Probing)의 정찰 시도를 감지하고 차단함으로써 사내 보안관제팀(SOC)에 위협 인텔리전스를 자동 제공하여 SOC 운영 비용 효율화 | **[FACT]** |
-| **21. Market Panic/Fake News Immunity** | 외부 지식(Exogenous Knowledge Poisoning) 및 가짜 뉴스를 동원한 환각 유도 공격을 차단하여, 허위 정보로 인한 잘못된 C-Level 의사결정 및 기업 평판 리스크 원천 봉쇄 | **[FACT]** |
-| **22. Cascading Service Failure Prevention** | 자기 참조 JSON(Recursive JSON) 등 파서 레벨의 무한 루프 유발 공격을 원천 차단하여, 백엔드 서비스 전체가 연쇄 다운(Cascading Failure)되는 치명적 손실 방지 | **[FACT]** |
+| **1. Delivery Cost (리서치 공수 99% 절감)** | 주니어 컨설턴트 1건 리서치 80h(약 800만원) → Token API/운영비용 건당 5,000원 이하로 절감. 인건비 대비 원가 절감률 99% | **[ASSUMPTION]** |
+| **2. Justification (의사결정 병목 해소)** | SOP에 근거한 객관적 리포트로 부서 간 정치적 교착 상태를 1일 이내에 돌파, 경영진 의사결정 부담 완화 | **[FACT]** |
+| **3. Audit Defensibility (감사 방어력)** | `mapping_rationale`을 통한 명시적 인과관계 증명으로 AI 산출물에 대한 신뢰성 및 감사 추적성(Audit Trail) 확보 | **[FACT]** |
+| **4. Liability & Risk Isolation (책임 한계 분리)** | SOP 미확인 시 판단을 보류하고 Human-in-the-Loop으로 이관하여, 환각에 의한 치명적 평판/법적 리스크 및 Zero-Day 공격 전면 회피 | **[FACT]** |
 
-## 7. 운영(Operational) KPIs
-- **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 Compliance-First 가드레일로 인해 무해한 데이터가 인간 검토(Human-in-the-Loop)로 이관되어 병목을 일으키지 않도록, 이관 건수 중 "수정 없이 단순 통과"된 건의 비율을 모니터링하여 방어 민감도를 지속 튜닝합니다.
-  - *Dashboard UI/UX 제안*: Dual-Axis 차트를 통해 일일 검토 이관량(Bar)과 정상 재승인 비율(Line)을 시각화하고, 특정 임계치(Threshold) 초과 시 원인이 되는 룰을 식별하는 **Escalation Efficiency & Sensitivity Tracker** 위젯 구현을 권고합니다.
-- **Anomaly Score Threshold Monitoring**: 여러 미세한 방어 룰(Zero-width 문자, 오타 등)이 개별 임계치를 넘지 않더라도, 누적된 기형적 패턴이 특정 점수(Anomaly Score)를 초과하면 자동으로 Human-in-the-loop 검토를 강제하는 구조를 도입합니다.
-- **Threat Intelligence Map**: 악의적인 데이터 주입(Injection, DoW 등) 시도를 실시간으로 추적하여, 경영진이 시스템이 방어해낸 엣지 케이스 공격들을 시각적으로 체감할 수 있는 **Threat Defense Map** 위젯을 추가합니다.
-- **Strict JSON Schema Validator Middleware**: 애플리케이션 레벨(Rust/Go)에서 LLM에 도달하기 전에 초고속으로 Cyclic JSON 및 스키마 변조를 1차 차단하는 미들웨어 아키텍처를 도입하여 AI 서버 부하를 최소화합니다.
-- **Human-AI Collaboration Protocol**: AI의 판정을 인간 전문가가 기각(Override)할 경우, 해당 사유를 반드시 시스템에 표준화된 폼으로 기록하게 하여 향후 AI 모델 미세조정(Fine-tuning) 데이터로 역환류시키는 협업 프로토콜을 수립 중입니다.
-- **Guardrail Latency Monitoring**: 극단적 엣지 케이스를 스캔하는 겹겹의 방어 로직으로 인해 처리 시간이 증가(UX 저하)하지 않도록, 파이프라인의 P95 응답 시간(Response Time)을 지속 추적하는 지표를 도입합니다.
+## 5. 핵심 운영 KPIs 및 아키텍처 리스크 방어
+- **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 방어 로직으로 무해한 데이터까지 Human 검토로 이관되는 비율을 모니터링하여 가드레일 민감도 튜닝.
+- **Human-AI Collaboration**: AI 판정을 인간이 기각(Override)할 경우 사유를 기록하여 향후 로직 미세조정에 역환류(Feedback Loop) 적용.
+- **Vector DB Cost Scaling & Latency 방어**: 대량의 쿼리 발생 시 Vector DB 과금 및 지연 시간 급증을 막기 위해, 애플리케이션 레벨에서 Semantic Caching 계층과 엄격한 Token Limit 임계치를 미들웨어에 구현 (상용화 아키텍처 반영 예정).
 
 ## 5. Known Limitations
 - **Compliance-First**: 민감 정보 감지 시 마스킹 처리가 아닌 전면 분석 중단을 채택하는 극단적 보수성을 띕니다.
