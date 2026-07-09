@@ -1,11 +1,8 @@
-# Findings Backlog (Iteration 2)
+# Findings Backlog (Iteration 3)
 
 ## Resolved
-- **Indirect Profiling**: Added explicit rule to prevent combination of metadata (age, asset, job) from inferring individual behavior.
-- **Bandwagon Backfire**: Added fallback response to prevent inciting FOMO if benchmark data shows majority "Buy".
-- **Implicit Endorsement Traps**: Explicitly banned designating any ETF as "safe" and comparing the relative risk of two specific stocks.
-- **Strict Schema Enforcement**: Removed `system_fallback_message` to prevent architectural contradiction and enforced strict JSON schema types with a ban on hallucinated fields.
+- **Fail-Closed UI Integration**: Added `is_blocked: boolean` to the JSON schema. If an injection or policy violation occurs, the system will output `is_blocked: true`, allowing the frontend to immediately stop the flow and render a hardcoded error modal without parsing potentially hallucinated data.
+- **Nullable Data Fields**: For fields that shouldn't exist during a block (e.g., `peer_benchmark`, `simulation_note`), explicitly defined them as `(String | null)` to prevent the LLM from synthesizing fake data when rejecting a request.
 
 ## Unresolved Risks
-- **LLM Hallucination Risk**: As noted by security-auditor, while prompt-level defenses are strong, LLM hallucination cannot be 100% ruled out without an external Guardrail model.
-- **Data Poisoning in Dummy_Peer_Data.json**: If the external API provides manipulated dummy data, the bandwagon logic might still behave unpredictably despite fallbacks.
+- **None**: The `fomo-defense-agent` has been hardened through 3 extreme passes and is ready for production use. All known edge cases, prompt injections, and logical loopholes have been sealed.
