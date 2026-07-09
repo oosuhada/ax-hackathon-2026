@@ -178,3 +178,46 @@
 - Next round focus: N/A - Deployment readiness achieved.
 
 *Next Wake Scheduled At: N/A*
+
+## Iteration 1 - 2026-07-09T23:25:00+09:00
+
+### UX Focus
+- 1-Pick UX의 설득력, 질문/추천 1개 원칙 검증, 데이터 프라이버시, 토큰 비용 최적화, 파서 붕괴 방지
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 심사위원 대상 60초 데모 피치 개선 및 타사 플랫폼 방어 UX 완화 |
+| qa-tester | rejected_options를 통한 우회적 다중 추천(정보 누출) 차단 |
+| ui-parser-breaker | 파서 붕괴 방지를 위한 rejected_options 객체 배열화 및 JSON 이스케이프 강화 |
+| data-privacy-scrubber | rejected_options 내 체형/과거 구매 이력 노출 방지 규칙 신설 |
+| cost-estimator | 불필요한 내부 지표(return_risk_note) 출력 제거로 토큰 비용 및 Latency 최소화 |
+
+### UX Frictions Found
+| ID | Friction | User Impact | Fix |
+|---|---|---|---|
+| UXF-01 | README 60초 데모 피치 구간의 병합 충돌 방치 | 피치의 설득력(Pain-Moment-Relief) 훼손 | 충돌 해결 및 구조화 |
+| UXF-02 | 타 플랫폼 언급 시 무조건 대화 차단 | 자연스러운 맥락 제공 시에도 차단되어 UX 저하 | 단순 언급 시 부드럽게 무시하고 추천 진행 |
+| UXF-03 | rejected_options 항목이 단순 문자열 배열 | 파싱 취약 및 프론트엔드 렌더링 에러 유발 가능 | 객체 배열 구조(`item`, `reason`)로 변경 |
+| UXF-04 | rejected_options 내 정확한 상품명 노출 | 유저가 배제된 상품을 검색하게 만들어 1-Pick 원칙 훼손 | 상품명을 추상화된 카테고리로 강제 변경 |
+| UXF-05 | rejected_options 내 체형/구매 이력 노출 | 개인정보 및 민감 맥락의 UI 노출 우려 | 긍정적 은유로 변경 및 구매 이력 추상화 강제 |
+| UXF-06 | return_risk_note의 LLM 재생성 요구 | 출력 토큰 낭비 및 TTFT(초기 응답) 지연 유발 | Output Schema에서 해당 내부 지표 제거 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | 60초 데모 피치 병합 충돌 해결 및 구조화 | 1-Pick 철학의 비즈니스 ROI 설득력 강화 |
+| SKILL.md | Rule 3, Rule 5 수정 및 Output Schema 최적화 | 병렬 서브에이전트가 도출한 6가지 UX Friction 동시 해결 및 JSON 무결성 확보 |
+
+### Re-test Result
+| Scenario | Result | Evidence |
+|---|---|---|
+| 타 플랫폼 언급 + 추천 요구 | N/A 대신 Musinsa 상품 1-Pick 추천 | 완화된 Rule 5 정상 작동 |
+| 체형 및 과거 구매이력 언급 | 추상적 카테고리와 긍정적 은유로 우회 출력 | 강화된 Rule 3 작동 확인 |
+
+### UX Score
+- Score: 95
+- Why not 100: 여전히 Dummy JSON에 의존하고 있어 카탈로그 증가 시 Input Token 낭비 우려
+- Next round focus: Input Token 낭비 최적화 및 RAG 기반 구조화 탐색 검토
+
+**Next Wake Scheduled At**: 2026-07-09T23:26:00+09:00 (Scheduled via local schedule command)
