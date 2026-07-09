@@ -179,3 +179,6 @@ GitHub token, 환경 변수, 개인 인증 정보는 절대 커밋하지 않습�
 - `research/`
 - `submissions/`
 
+## Topics
+
+[`ai-agents`](https://github.com/topics/ai-agents) · [`ai-assisted-development`](https://github.com/topics/ai-assisted-development) · [`codex`](https://github.com/topics/codex) · [`hackathon`](https://github.com/topics/hackathon) · [`multi-agent`](https://github.com/topics/multi-agent) · [`plugin-development`](https://github.com/topics/plugin-development) · [`python`](https://github.com/topics/python) · [`red-teaming`](https://github.com/topics/red-teaming)
