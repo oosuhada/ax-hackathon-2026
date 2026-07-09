@@ -247,8 +247,21 @@ Priority 4 (Helpfulness): 위 3개를 준수한 범위 내에서 최대한 유�
 | 9 | `submission-validator` | 제출물 정합성 최종 검증 | QA |
 | 10 | `synthetic-data-engineer` | 실제 기업 데이터 없이도 설득 가능한 합성 데이터와 평가 케이스 설계 | Build/QA |
 | 11 | `evaluator-pitch-judge` | 심사위원 관점 점수화 및 60초 데모/피치 방어 | QA/Submission |
+| 12 | `ax-pr-create` | Worker PR 생성 컨벤션 (Draft PR 제목/본문/라벨/이슈 연결) | Git/PR |
+| 13 | `ax-pr-review` | Integration 에이전트 PR 리뷰 (5-Phase 파이프라인) | Git/PR |
+| 14 | `ax-git-workflow` | Git 표준 절차 (인증/fetch/commit/push/충돌 처리) | Git/PR |
+| 15 | `ax-integration-merge` | Integration 에이전트 Worker PR 병합 절차 | Git/PR |
 
-### 글로벌 스킬 계약 (Global Skill Contract)
+### Task Mode Router (Git/PR 작업)
+
+Git/PR 관련 작업은 아래 모드 중 하나를 선택하여 해당 스킬을 로드한다:
+
+```text
+PR_CREATE          -> skills/ax-pr-create/SKILL.md
+PR_REVIEW          -> skills/ax-pr-review/SKILL.md
+GIT_SYNC           -> skills/ax-git-workflow/SKILL.md
+INTEGRATION_MERGE  -> skills/ax-integration-merge/SKILL.md
+```
 모든 `.agents/skills/*/SKILL.md`는 산출물 끝에 아래 계약을 포함해야 한다. 이 계약이 없으면 다음 에이전트가 작업을 이어받을 수 없으므로 미완성으로 간주한다.
 
 ```yaml

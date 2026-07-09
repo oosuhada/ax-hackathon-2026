@@ -1,0 +1,317 @@
+# ============================================================
+# 제출물 검증 워크플로우
+# submissions/** 경로에 변경이 있을 때 자동으로 실행됩니다.
+# 하나의 Job 안에서 6가지 검증을 순차 실행하여 Actions 분 절약.
+# ============================================================
+name: 제출물 검증
+
+on:
+  pull_request:
+    paths:
+      - 'submissions/**'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  validate-submission:
+    name: 제출물 종합 검증
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 체크아웃 ──────────────────────────────────────────
+      - name: 코드 체크아웃
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # diff 비교를 위해 전체 히스토리 필요
+
+      # ── 1단계: 구조 검증 ──────────────────────────────────
+      # 변경된 파일에서 회사명을 감지하고 필수 파일 존재 여부를 확인합니다.
+      - name: "1️⃣ 구조 검증 (필수 파일 존재 확인)"
+        id: structure
+        run: |
+          set -euo pipefail
+
+          # PR에서 변경된 파일 목록 가져오기
+          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }} \
+                    ${{ github.event.pull_request.head.sha }} -- submissions/)
+
+          if [ -z "$CHANGED" ]; then
+            echo "⚠️ submissions/ 경로에 변경된 파일이 없습니다."
+            exit 0
+          fi
+
+          # 변경된 회사 감지 (중복 제거)
+          COMPANIES=$(echo "$CHANGED" | grep -oP '^submissions/\K[^/]+' | sort -u)
+          echo "감지된 회사: $COMPANIES"
+          echo "companies=$COMPANIES" >> "$GITHUB_OUTPUT"
+
+          FAIL=0
+          for COMPANY in $COMPANIES; do
+            BASE="submissions/${COMPANY}/submission"
+            echo "──────────────────────────────────────"
+            echo "🔍 ${COMPANY} 제출물 구조 검증 시작"
+
+            # plugin.json 존재 확인
+            if [ ! -f "${BASE}/src/.codex-plugin/plugin.json" ]; then
+              echo "::error file=${BASE}/src/.codex-plugin/plugin.json::❌ plugin.json 파일이 없습니다."
+              FAIL=1
+            else
+              echo "✅ plugin.json 존재"
+            fi
+
+            # SKILL.md 최소 1개 존재 확인
+            SKILL_COUNT=$(find "${BASE}/src/skills" -name "SKILL.md" 2>/dev/null | wc -l)
+            if [ "$SKILL_COUNT" -eq 0 ]; then
+              echo "::error::❌ ${COMPANY}: src/skills/*/SKILL.md 파일이 하나도 없습니다."
+              FAIL=1
+            else
+              echo "✅ SKILL.md ${SKILL_COUNT}개 발견"
+            fi
+
+            # README.md 존재 확인
+            if [ ! -f "${BASE}/README.md" ]; then
+              echo "::error file=${BASE}/README.md::❌ README.md 파일이 없습니다."
+              FAIL=1
+            else
+              echo "✅ README.md 존재"
+            fi
+
+            # logs/ 디렉토리 존재 확인
+            if [ ! -d "${BASE}/logs" ]; then
+              echo "::error::❌ ${COMPANY}: logs/ 디렉토리가 없습니다."
+              FAIL=1
+            else
+              echo "✅ logs/ 디렉토리 존재"
+            fi
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "::error::구조 검증 실패 — 위의 오류를 확인하세요."
+            exit 1
+          fi
+
+      # ── 2단계: plugin.json 검증 ───────────────────────────
+      # JSON 유효성, name 필드 kebab-case 여부, skills 폴더명 일치를 확인합니다.
+      - name: "2️⃣ plugin.json 유효성 검증"
+        if: always() && steps.structure.outputs.companies != ''
+        run: |
+          set -euo pipefail
+          FAIL=0
+
+          for COMPANY in ${{ steps.structure.outputs.companies }}; do
+            PLUGIN="submissions/${COMPANY}/submission/src/.codex-plugin/plugin.json"
+
+            if [ ! -f "$PLUGIN" ]; then
+              echo "⚠️ ${COMPANY}: plugin.json 없음 — 건너뜀 (구조 검증에서 이미 오류 보고)"
+              continue
+            fi
+
+            echo "🔍 ${COMPANY}: plugin.json 검증 시작"
+
+            # JSON 파싱 유효성 확인
+            if ! python3 -c "import json, sys; json.load(open(sys.argv[1]))" "$PLUGIN" 2>/dev/null; then
+              echo "::error file=${PLUGIN}::❌ plugin.json이 유효한 JSON이 아닙니다."
+              FAIL=1
+              continue
+            fi
+            echo "  ✅ 유효한 JSON"
+
+            # name 필드 추출
+            NAME=$(python3 -c "import json, sys; print(json.load(open(sys.argv[1])).get('name',''))" "$PLUGIN")
+
+            if [ -z "$NAME" ]; then
+              echo "::error file=${PLUGIN}::❌ plugin.json에 name 필드가 없습니다."
+              FAIL=1
+              continue
+            fi
+
+            # kebab-case 검증 (소문자, 숫자, 하이픈만 허용)
+            if ! echo "$NAME" | grep -qP '^[a-z0-9]+(-[a-z0-9]+)*$'; then
+              echo "::error file=${PLUGIN}::❌ name '${NAME}'이(가) kebab-case가 아닙니다."
+              FAIL=1
+            else
+              echo "  ✅ kebab-case 형식: ${NAME}"
+            fi
+
+            # name이 skills/ 하위 폴더명과 일치하는지 확인
+            SKILLS_DIR="submissions/${COMPANY}/submission/src/skills"
+            if [ ! -d "${SKILLS_DIR}/${NAME}" ]; then
+              AVAILABLE=$(ls -1 "$SKILLS_DIR" 2>/dev/null | tr '\n' ', ' || echo "(없음)")
+              echo "::error file=${PLUGIN}::❌ name '${NAME}'에 대응하는 skills 폴더가 없습니다. 존재하는 폴더: ${AVAILABLE}"
+              FAIL=1
+            else
+              echo "  ✅ skills/${NAME}/ 폴더 일치"
+            fi
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            exit 1
+          fi
+
+      # ── 3단계: SKILL.md name 필드 검증 ────────────────────
+      # YAML frontmatter의 name 필드가 부모 폴더명과 일치하는지 확인합니다.
+      - name: "3️⃣ SKILL.md name 필드 검증"
+        if: always() && steps.structure.outputs.companies != ''
+        run: |
+          set -euo pipefail
+          FAIL=0
+
+          for COMPANY in ${{ steps.structure.outputs.companies }}; do
+            SKILLS_DIR="submissions/${COMPANY}/submission/src/skills"
+
+            if [ ! -d "$SKILLS_DIR" ]; then
+              continue
+            fi
+
+            # 모든 SKILL.md 파일을 순회
+            while IFS= read -r SKILL_FILE; do
+              # 부모 폴더명 추출 (skills/{folder-name}/SKILL.md)
+              FOLDER_NAME=$(basename "$(dirname "$SKILL_FILE")")
+
+              # YAML frontmatter에서 name 필드 추출
+              # --- 사이의 YAML에서 첫 번째 name: 값을 가져옴
+              SKILL_NAME=$(sed -n '/^---$/,/^---$/{ /^name:/{ s/^name:[[:space:]]*//; s/^["'"'"']//; s/["'"'"']$//; p; q; } }' "$SKILL_FILE")
+
+              if [ -z "$SKILL_NAME" ]; then
+                echo "::warning file=${SKILL_FILE}::⚠️ SKILL.md에서 name 필드를 찾을 수 없습니다."
+                continue
+              fi
+
+              if [ "$SKILL_NAME" != "$FOLDER_NAME" ]; then
+                echo "::error file=${SKILL_FILE}::❌ SKILL.md의 name '${SKILL_NAME}'이(가) 폴더명 '${FOLDER_NAME}'과 일치하지 않습니다."
+                FAIL=1
+              else
+                echo "✅ ${COMPANY}: ${FOLDER_NAME}/SKILL.md name 일치"
+              fi
+            done < <(find "$SKILLS_DIR" -name "SKILL.md" -type f)
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            exit 1
+          fi
+
+      # ── 4단계: 시크릿 스캔 ────────────────────────────────
+      # PR diff 내에서 토큰, 시크릿, 환경변수 패턴을 검사합니다.
+      # 전체 레포가 아닌 diff만 검사하여 기존 코드 오탐 방지.
+      - name: "4️⃣ 시크릿 스캔 (diff 전용)"
+        if: always()
+        run: |
+          set -euo pipefail
+
+          # PR의 diff만 추출
+          DIFF=$(git diff ${{ github.event.pull_request.base.sha }} \
+                 ${{ github.event.pull_request.head.sha }})
+
+          FAIL=0
+
+          # 검사할 패턴 목록 (패턴|설명)
+          PATTERNS=(
+            "ghp_|GitHub Personal Access Token (classic)"
+            "github_pat_|GitHub Fine-grained PAT"
+            "GITHUB_TOKEN=gh|하드코딩된 GITHUB_TOKEN"
+            "\.env\.local|.env.local 파일 참조 (내용 유출 위험)"
+            "Bearer gh|GitHub Bearer 토큰"
+          )
+
+          for ENTRY in "${PATTERNS[@]}"; do
+            PATTERN="${ENTRY%%|*}"
+            DESC="${ENTRY##*|}"
+
+            # diff의 추가된 줄(+)에서만 검색 (컨텍스트/삭제 줄 제외)
+            MATCHES=$(echo "$DIFF" | grep -n "^\+" | grep -iE "$PATTERN" || true)
+
+            if [ -n "$MATCHES" ]; then
+              echo "::error::🚨 시크릿 감지: ${DESC}"
+              echo "$MATCHES" | head -5
+              FAIL=1
+            fi
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "::error::시크릿이 감지되었습니다. 커밋에서 제거 후 다시 푸시하세요."
+            exit 1
+          fi
+
+          echo "✅ 시크릿 패턴 미발견"
+
+      # ── 5단계: 로그 보호 ──────────────────────────────────
+      # 원본 대화 기록 파일이 수정되면 경고를 발행합니다.
+      - name: "5️⃣ 로그 보호 (원본 트랜스크립트 변경 감지)"
+        if: always()
+        run: |
+          set -euo pipefail
+
+          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }} \
+                    ${{ github.event.pull_request.head.sha }})
+
+          # 보호 대상 파일 패턴
+          PROTECTED_FILES=$(echo "$CHANGED" | grep -E "(original_conversation_transcript\.jsonl|transcript\.jsonl)$" || true)
+
+          if [ -n "$PROTECTED_FILES" ]; then
+            echo "$PROTECTED_FILES" | while IFS= read -r FILE; do
+              echo "::warning file=${FILE}::⚠️ 원본 트랜스크립트 파일이 수정되었습니다. 의도된 변경인지 확인하세요."
+            done
+            echo "⚠️ 로그 보호 경고 발행됨 (블로킹 아님)"
+          else
+            echo "✅ 보호 대상 로그 파일 변경 없음"
+          fi
+
+      # ── 6단계: 금지 문자열 검사 (카카오페이증권 전용) ──────
+      # 금융 규제 관련 금지 표현이 포함되어 있는지 검사합니다.
+      - name: "6️⃣ 금지 문자열 검사 (카카오페이증권)"
+        if: always() && contains(steps.structure.outputs.companies || '', 'kakaopaysec')
+        run: |
+          set -euo pipefail
+
+          # 검사 대상: kakaopaysec의 SKILL.md와 README.md
+          TARGET_DIR="submissions/kakaopaysec/submission"
+          TARGET_FILES=()
+
+          # SKILL.md 파일 수집
+          while IFS= read -r f; do
+            TARGET_FILES+=("$f")
+          done < <(find "$TARGET_DIR/src/skills" -name "SKILL.md" -type f 2>/dev/null)
+
+          # README.md 추가
+          if [ -f "$TARGET_DIR/README.md" ]; then
+            TARGET_FILES+=("$TARGET_DIR/README.md")
+          fi
+
+          if [ ${#TARGET_FILES[@]} -eq 0 ]; then
+            echo "⚠️ 검사 대상 파일 없음 — 건너뜀"
+            exit 0
+          fi
+
+          # 금융 규제 금지 문자열 목록
+          FORBIDDEN=(
+            "권장"
+            "안전한 투자"
+            "수익 보장"
+            "ETF 분할 매수"
+            "상품 안착"
+          )
+
+          FAIL=0
+
+          for FILE in "${TARGET_FILES[@]}"; do
+            for TERM in "${FORBIDDEN[@]}"; do
+              MATCHES=$(grep -n "$TERM" "$FILE" || true)
+              if [ -n "$MATCHES" ]; then
+                # 매칭된 각 줄에 대해 오류 보고
+                while IFS= read -r LINE; do
+                  LINENUM=$(echo "$LINE" | cut -d: -f1)
+                  echo "::error file=${FILE},line=${LINENUM}::❌ 금지 문자열 '${TERM}' 발견"
+                done <<< "$MATCHES"
+                FAIL=1
+              fi
+            done
+          done
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "::error::카카오페이증권 제출물에 금융 규제 관련 금지 표현이 포함되어 있습니다."
+            exit 1
+          fi
+
+          echo "✅ 금지 문자열 미발견"

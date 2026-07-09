@@ -1,0 +1,47 @@
+# ============================================================
+# PR 자동 라벨링 설정 (actions/labeler@v5 용)
+# 변경된 파일 경로 기반으로 PR에 라벨을 자동 부여합니다.
+# ============================================================
+
+# ── 회사별 라벨 ──────────────────────────────────────────────
+'company:musinsa':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/musinsa/**'
+
+'company:kakaopaysec':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/kakaopaysec/**'
+
+'company:samilpwc':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/samilpwc/**'
+
+# ── Swarm별 라벨 (병렬 작업 로그 경로 기반) ──────────────────
+'swarm:reliability':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/*/submission/logs/parallel/swarm-reliability/**'
+
+'swarm:product-ux':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/*/submission/logs/parallel/swarm-product-ux/**'
+
+'swarm:business-readme':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/*/submission/logs/parallel/swarm-business-readme/**'
+
+'swarm:skill-behavior':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/*/submission/logs/parallel/swarm-skill-behavior/**'
+
+'swarm:golden-demo':
+  - changed-files:
+      - any-glob-to-any-file: 'submissions/*/submission/logs/parallel/swarm-golden-demo/**'
+
+# ── 기타 라벨 ────────────────────────────────────────────────
+'docs':
+  - changed-files:
+      - any-glob-to-any-file: 'docs/**'
+
+'agents':
+  - changed-files:
+      - any-glob-to-any-file: '.agents/**'
