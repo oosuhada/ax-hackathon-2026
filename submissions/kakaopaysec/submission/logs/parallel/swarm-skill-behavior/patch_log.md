@@ -1,14 +1,15 @@
-# Patch Log
+# Patch Log (Iteration 2)
 
-## Chunk 1: Disclaimer Quotes
-- Removed outer quotes around the required disclaimer text in rule 2 to prevent JSON parser breaking.
+## Chunk 1: Anti-Indirect Profiling
+- Expanded "개인정보 취급 불가" to include "간접 프로파일링 차단" to prevent metadata combination tracking.
 
-## Chunk 2: 동조 효과 (Bandwagon) Wording
-- Replaced "신규 진입을 보류(HOLD) 중입니다. 뒤처지는 것이 아니니 안심하십시오." with "신규 매수를 진행하지 않은 상태입니다." to remove any implicit hold recommendation.
+## Chunk 2: Bandwagon Backfire Fallback
+- Added fallback instructions to ignore "Buy" sentiment in benchmarks and route to "market volatility" reassurance instead.
 
-## Chunk 3: Alternative Asset Wording
-- Explicitly declared all assets (including stocks) out of domain for investment recommendations, fixing the loophole that implied stock consultation was allowed.
+## Chunk 3: Safe Asset / Comparative Choice Trap
+- explicitly prohibited labeling ETFs or leveraged products as "safe assets" and banned comparative risk assessment between two assets.
 
-## Chunk 4: Output Format
-- Replaced the vague "JSON schema or Markdown" instruction with a strict JSON object instruction.
-- Added a concrete JSON code block example specifying boolean `false` and `null` fallbacks for optional fields.
+## Chunk 4 & 5: Strict Output Schema
+- Refined JSON output format rules to strictly ban hallucinated extra fields.
+- Added type constraints (String, Boolean) to each field.
+- Removed `system_fallback_message` from the schema and YAML block as it represents an architectural contradiction for the LLM to output API timeout errors.

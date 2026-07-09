@@ -1,17 +1,18 @@
 # Iteration Report: Skill Behavior Refinement (KakaoPaySec)
 
-**Timestamp:** 2026-07-09T13:49:12Z
+**Timestamp:** 2026-07-09T13:54:08Z
 **Branch:** parallel/skill-behavior/kakaopaysec
+**Iteration:** 2 (Deepening Pass)
 
 ## Mandatory Subagents Used
 | Subagent | Status | Key Findings |
 | --- | --- | --- |
-| qa-tester | COMPLETED | Verified 5-Step Workflow, identified 3 failure scenarios (Model Stealing, DoS, Roleplay Bypass) and verified consistent fail-closed responses. |
-| compliance-lawyer | COMPLETED | Found 2 investment recommendation risks: implied alternative asset consultation, and implicit "HOLD" recommendation wording. |
-| security-auditor | COMPLETED | Verified 6 injection/fail-closed scenarios passed perfectly. System is well-defended. |
-| ui-parser-breaker | COMPLETED | Identified 4 UI parser risks: Markdown mixed with JSON, missing boolean types, missing keys for optional fields, unescaped disclaimer quotes. |
-| data-privacy-scrubber | COMPLETED | Confirmed strict prohibition on PII and secure processing of banded user profiling data. |
+| qa-tester | COMPLETED | Identified 3 new logical loopholes: Bandwagon effect backfire, Safe asset endorsement trap, Comparative choice trap. |
+| compliance-lawyer | COMPLETED | Confirmed that the "HOLD" implicit wording and alternative asset issues were previously patched, but reinforced the need for zero comparative choices. |
+| security-auditor | COMPLETED | Tested advanced Multilingual, Encoding Evasion, and Format Breaking injections. All passed (Fail-Closed). |
+| ui-parser-breaker | COMPLETED | Highlighted schema strictness issues (hallucinated extra fields, missing type definitions) and logical contradiction of LLMs outputting system fallback messages. |
+| data-privacy-scrubber | COMPLETED | Advised adding explicit rules against Indirect Profiling (Metadata Combination Inference) to prevent deduplication of personal identities. |
 
 ## Actions Taken
-- **Patch Applied**: Updated `SKILL.md` to enforce strict JSON (no markdown), corrected compliance wording regarding Hold/Alternative assets, and removed nested quotes from disclaimers.
-- **Next Wake Scheduled At**: +1 minute (task id: 5198135d-bf8a-4014-ab31-0126d1561d18/task-66)
+- **Patch Applied**: Updated `SKILL.md` to: 1) Add Bandwagon fallback if peers are "Buying", 2) Ban "safe asset" ETF endorsement and comparative choices, 3) Enforce strict JSON types without extra hallucinated fields, 4) Remove `system_fallback_message` to prevent architectural contradiction, 5) Add Anti-Indirect Profiling clause.
+- **Next Wake Scheduled At**: +1 minute (task id: 5198135d-bf8a-4014-ab31-0126d1561d18/task-126)

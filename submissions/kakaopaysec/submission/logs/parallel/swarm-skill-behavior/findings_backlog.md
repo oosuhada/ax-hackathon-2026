@@ -1,10 +1,11 @@
-# Findings Backlog
+# Findings Backlog (Iteration 2)
 
 ## Resolved
-- **UI Parser Vulnerabilities**: Output format allowed markdown, missing strict schema, and missing keys for optional fields. Resolved by adding a strict JSON schema block and forbidding markdown blocks.
-- **Nested Quotes in Disclaimer**: The disclaimer in constraints had nested quotes which could break JSON string values. Resolved by removing outer quotes.
-- **Compliance: Alternative Assets**: Wording implied that while alternative assets are out of domain, stocks might be within domain for consultation. Resolved by explicitly stating all assets are out of domain for investment recommendations.
-- **Compliance: "HOLD" Recommendation**: "보류(HOLD) 중입니다" implied a hold recommendation. Resolved by using objective metrics only without judgment.
+- **Indirect Profiling**: Added explicit rule to prevent combination of metadata (age, asset, job) from inferring individual behavior.
+- **Bandwagon Backfire**: Added fallback response to prevent inciting FOMO if benchmark data shows majority "Buy".
+- **Implicit Endorsement Traps**: Explicitly banned designating any ETF as "safe" and comparing the relative risk of two specific stocks.
+- **Strict Schema Enforcement**: Removed `system_fallback_message` to prevent architectural contradiction and enforced strict JSON schema types with a ban on hallucinated fields.
 
 ## Unresolved Risks
 - **LLM Hallucination Risk**: As noted by security-auditor, while prompt-level defenses are strong, LLM hallucination cannot be 100% ruled out without an external Guardrail model.
+- **Data Poisoning in Dummy_Peer_Data.json**: If the external API provides manipulated dummy data, the bandwagon logic might still behave unpredictably despite fallbacks.
