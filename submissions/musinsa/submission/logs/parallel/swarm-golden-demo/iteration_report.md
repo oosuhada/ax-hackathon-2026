@@ -18,5 +18,5 @@
 2. Drafted a 15-case test matrix mapped directly to `SKILL.md` rules.
 
 ## Scheduled Follow-up
-- **Next Wake Scheduled At:** (To be updated via timer)
-- **Task ID:** (To be updated)
+- **Next Wake Scheduled At:** 2026-07-09T22:43:00+09:00
+- **Task ID:** e25f1280-7cb0-4f56-80f8-b1dbaf11c194/task-47
