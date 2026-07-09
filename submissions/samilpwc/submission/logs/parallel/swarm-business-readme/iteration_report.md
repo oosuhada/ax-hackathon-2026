@@ -288,3 +288,44 @@
 - Why not 100: Synthetic 데이터셋 기반의 세부 설득 시나리오 보강 요망
 - Next round focus: Synthetic 데이터셋 스키마 고도화 및 프롬프트 인젝션 방어 심화
 - Next Wake Scheduled At: Scheduled for 1 minute later
+
+## Iteration 2 - 2026-07-09 23:25:00
+
+### Business Focus
+- Synthetic Data (GIGO 방어) 및 아키텍처 방어(Politicized Data) 강화, Audit Trail 법적 리스크 해소
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 아키텍처 상 편향 데이터 제어 로직 제안, 딥다이브 Judge Objections 3개 생성 |
+| roi-architect | GIGO 방어력을 입증하는 합성 데이터 스키마 정의 및 5대 ROI 응집성 검증 |
+| compliance-lawyer | Audit Trail 문구의 e-Discovery 법적 리스크 차단 및 Disclaimer 보강, PII 점검(PASS) |
+| cost-estimator | (roi-architect와 병합) |
+| data-privacy-scrubber | (compliance-lawyer와 병합) |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-04 | Simulated RAG의 실전 검색 한계 (Retrieval Failure) | High | 상용화 시 Semantic Caching 및 Vector DB의 Re-ranking 로직을 미들웨어에 추가하여 방어 예정. |
+| JO-05 | Audit Trail의 확장성과 스토리지 병목 (Latency/Storage) | Medium | 모든 쿼리가 아닌 'Human-in-the-loop' 이관 등 회색지대 이슈에 대해서만 Cold Storage에 선별 보관하는 티어링 설계 적용. |
+| JO-06 | Audit Trail의 재현성 및 법적 증거력 (LLM Non-determinism) | High | Audit Trail은 법적 증거가 아닌 내부 QA용임을 Disclaimer에 명시하여 리스크를 원천 차단함. |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| Critical | Audit Trail이 외부 감사 제출용으로 오인되어 법적 리스크 발생 | README.md | 내부 품질 관리(QA) 용도로만 한정하는 Disclaimer 추가 및 설명 수정 |
+| High | 정치적/편향적 데이터에 대한 시스템적 방어 논리 부재 | README.md | Section 5에 Outlier 스크리닝 및 Data Conflict Report 이관 로직 추가 |
+| Medium | Synthetic 데이터가 단순 비식별 목업 데이터로만 인식됨 | README.md | Multi-Axis Adversarial Test Matrix로 재정의하여 GIGO 방어력 입증 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | Section 7 (Disclaimer) 수정 | Audit Trail은 내부용(QA)이며 법적 증빙 불가 명시 |
+| README.md | Section 5 (KPIs & 아키텍처) 추가 | Politicized Data 교차 검증 및 Data Conflict Report 강제 이관 프로세스 명시 |
+| README.md | Section 3 (Q3 Step 1) 수정 | 합성 데이터를 Adversarial Test Matrix로 격상 |
+
+### Judge Score
+- Score: 95/100
+- Why not 100: 프롬프트 인젝션 및 PII 우회에 대한 구체적 방어 엣지 케이스 로깅 추가 요망
+- Next round focus: 실제 QA-Tester를 구동하여 엣지케이스 테스트 결과(PII 차단 등) 보완
+- Next Wake Scheduled At: Scheduled for 1 minute later
