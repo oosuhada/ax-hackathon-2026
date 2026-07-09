@@ -1,6 +1,6 @@
 {
   "name": "fomo-defense-agent",
   "version": "1.0.0",
-  "description": "초보 투자자의 불안감(FOMO)을 방어하고 안심 투자를 유도하는 5단계 설득 UX 기반 Codex 플러그인",
+  "description": "초보 투자자의 불안감(FOMO)을 방어하고 안심/적합성 절차로 유도하는 5단계 설득 UX 기반 Codex 플러그인",
   "skills": "./skills/"
 }
