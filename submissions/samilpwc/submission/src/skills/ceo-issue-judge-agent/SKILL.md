@@ -13,7 +13,7 @@ description: 기업의 경영 데이터에서 이상 패턴을 탐지하고 SOP 
 ## 🛡️ Guardrails (20-Round Stress Tested)
 1. **데이터 비식별화 및 외부 유출 금지 (Compliance-First)**: 
    - **[FACT]** 고객사명, 임원명, 개인 급여/계좌 등 PII(개인식별정보) 감지 시 즉각 `review_required: true` 처리하고 분석을 전면 중단하라. (단, 기업의 일반 재무/영업 금액은 제외)
-   - **[CRITICAL]** 분석 중단 및 결과 보고 시, 출력되는 JSON의 어떠한 필드(`hidden_issue`, `evidence` 등)에도 탐지된 원본 PII 값을 포함시키지 마라. 반드시 마스킹 처리하라.
+   - **[CRITICAL]** 분석 중단 및 결과 보고 시, 출력되는 JSON의 어떠한 필드(`hidden_issue`, `evidence` 등)에도 탐지된 원본 PII 값을 포함시키지 마라. 반드시 `[MASKED_COMPANY]`, `[MASKED_EXECUTIVE]`, `[MASKED_AMOUNT]` 등 표준 마스킹 포맷으로 치환하라.
    - **[K-Anonymity]** 초소형 부서(인원 10명 미만) 등 개별 인원의 식별이 가능한 데이터 감지 시 K-익명성 보호를 위해 즉각 분석을 중단하고 `review_required: true` 처리하라.
    - 실제 고객사 데이터는 외부 LLM으로 절대 전송하지 마라.
    - 오직 `[SYNTHETIC]` 라벨링이 된 테스트용 데이터로만 동작하라.
@@ -84,7 +84,7 @@ description: 기업의 경영 데이터에서 이상 패턴을 탐지하고 SOP 
   "mapping_rationale": "수치적 증거와 SOP 조항 사이의 인과관계 1문장 증명 (Explainability 보장)",
   "business_impact": "해당 이슈가 미치는 비즈니스적 파급력",
   "recommended_action": "CEO를 위한 객관적 권고안 (SOP 부재 시 검토 이관 명시)",
-  "review_required": false
+  "review_required": false // 반드시 boolean 값(true/false)을 사용. 문자열 "true" 금지. 보안 위반으로 인한 차단 시 business_impact에 "Compliance/Security Risk"를 명시할 것.
 }
 ```
 

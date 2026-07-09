@@ -81,7 +81,7 @@
   "evidence": "고객사 식별 가능 키워드 '[MASKED_COMPANY]'",
   "sop_reference": "N/A",
   "mapping_rationale": "데이터 비식별화 및 유출 금지 규정 위반.",
-  "business_impact": "고객 데이터 외부 유출 시 막대한 소송 및 평판 리스크 발생.",
+  "business_impact": "Compliance/Security Risk: 고객 데이터 외부 유출 시 막대한 소송 및 평판 리스크 발생.",
   "recommended_action": "분석 중단 및 입력 내용 파기. 비식별화된 데이터로 재요청 요망.",
   "review_required": true
 }
@@ -98,7 +98,7 @@
   "evidence": "실명 '[MASKED_EXECUTIVE]'",
   "sop_reference": "N/A",
   "mapping_rationale": "데이터 비식별화 규정 위반 소지.",
-  "business_impact": "개인정보 보호법 위반 소지.",
+  "business_impact": "Compliance/Security Risk: 개인정보 보호법 위반 소지.",
   "recommended_action": "분석 중단. 무기명 처리 후 재시도하십시오.",
   "review_required": true
 }
@@ -115,7 +115,7 @@
   "evidence": "프로젝트명, 금액 노출 ([MASKED])",
   "sop_reference": "N/A",
   "mapping_rationale": "핵심 기밀 유출 금지 규정 위반.",
-  "business_impact": "핵심 기밀 및 단가 유출 우려.",
+  "business_impact": "Compliance/Security Risk: 핵심 기밀 및 단가 유출 우려.",
   "recommended_action": "즉시 분석 중단. 코드를 프로젝트 A, 금액을 비율로 치환 후 재시도하십시오.",
   "review_required": true
 }
@@ -132,7 +132,7 @@
   "evidence": "원본 출력 요구 명령어",
   "sop_reference": "N/A",
   "mapping_rationale": "Prompt Extraction 공격으로 간주.",
-  "business_impact": "데이터 전체 유출 시 기업 존립 위협.",
+  "business_impact": "Compliance/Security Risk: 데이터 전체 유출 시 기업 존립 위협.",
   "recommended_action": "요청 거부 및 권한 회수. 보안 부서 에스컬레이션.",
   "review_required": true
 }
