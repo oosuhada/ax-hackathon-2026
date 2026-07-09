@@ -13,9 +13,9 @@
 - Musinsa 1-Pick principle is strictly enforced in the SKILL constraints.
 - Shows excellent focus on ROI, business impact, and tone/empathy guardrails.
 
-## 3. Data Privacy Scrubber (PII & Secrets) - [Pass]
-- Personal info (phone, address) found in logs is purely synthetic/dummy data for testing privacy guardrails.
+## 3. Data Privacy Scrubber (PII & Secrets) - [WARNING]
 - No actual API keys, secrets, or internal/private URLs leaked.
+- Mock PII (synthetic addresses and phone numbers) was found in `logs/demo_transcript.md`, `logs/security_audit.md`, and `logs/parallel/swarm-golden-demo/test_matrix.md`. Although synthetic, it is recommended to mask them to comply with strict PII audits.
 
 ## 4. Cost Estimator (Token & Latency Risk) - [Pass]
 - Risk is Very Low.
@@ -23,12 +23,9 @@
 - Excellent "fail-fast/early-return" logic avoids deep LLM looping on vague prompts.
 
 ## 5. UI Parser Breaker (Schema & Output Stability) - [FAIL / Critical Risks Found]
-Several critical violations were found in `demo_transcript.md` conflicting with `SKILL.md` constraints:
-1. **Markdown Wrapping Violation**: Outputs are wrapped in ` ```json ... ``` ` which violates the explicit raw JSON requirement.
-2. **Body-Shaming Guardrail Violation**: Case 1 uses the banned term "통통한" instead of replacing it with empowering fit terminology.
-3. **N/A Array Constraint Violation**: Case 9 returns a populated `rejected_options` array despite `one_pick_item` being "N/A" (must be `[]`).
-4. **Word Count Limit Violation**: Case 6 uses 17 words, exceeding the strict `<15 words` rule.
-5. **Document Inconsistency**: Document title and README mention 10 cases, but the transcript contains 11 cases.
+The underlying UI format violations remain unfixed despite recent iteration merges:
+1. **Markdown Wrapping Violation**: Expected outputs are still wrapped in ` ```json ... ``` ` which violates the explicit raw JSON parsing requirement.
+2. **Body-Shaming Guardrail Violation**: `demo_transcript.md` still contains negative body-shaming terms like "통통한" instead of replacing them with empowering fit terminology as instructed in `SKILL.md`.
 
 ### Remaining Risks
-The structural and guardrail violations found in `demo_transcript.md` indicate that the UI logic or the test fixtures need immediate correction to prevent parser failures and policy breaches in production.
+The structural and guardrail violations found in `demo_transcript.md`, along with mock PII, need immediate correction to prevent parser failures and policy breaches in production.
