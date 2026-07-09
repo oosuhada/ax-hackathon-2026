@@ -179,6 +179,16 @@ GitHub token, 환경 변수, 개인 인증 정보는 절대 커밋하지 않습�
 - `research/`
 - `submissions/`
 
-## Topics
+## Architecture & Topics / 아키텍처 및 주제
 
-[`ai-agents`](https://github.com/topics/ai-agents) · [`ai-assisted-development`](https://github.com/topics/ai-assisted-development) · [`codex`](https://github.com/topics/codex) · [`hackathon`](https://github.com/topics/hackathon) · [`multi-agent`](https://github.com/topics/multi-agent) · [`plugin-development`](https://github.com/topics/plugin-development) · [`python`](https://github.com/topics/python) · [`red-teaming`](https://github.com/topics/red-teaming) · [`agentic-ai`](https://github.com/topics/agentic-ai) · [`llm`](https://github.com/topics/llm) · [`mcp`](https://github.com/topics/mcp) · [`automation`](https://github.com/topics/automation) · [`security`](https://github.com/topics/security) · [`prompt-engineering`](https://github.com/topics/prompt-engineering) · [`evaluation`](https://github.com/topics/evaluation) · [`developer-tools`](https://github.com/topics/developer-tools)
+**Architecture / 아키텍처**<br>
+[`multi-agent-systems`](https://github.com/topics/multi-agent-systems) · [`agent-orchestration`](https://github.com/topics/agent-orchestration) · [`plugin-architecture`](https://github.com/topics/plugin-architecture) · [`tool-calling`](https://github.com/topics/tool-calling) · [`sandboxed-execution`](https://github.com/topics/sandboxed-execution) · [`human-in-the-loop`](https://github.com/topics/human-in-the-loop) · [`evaluation-driven-development`](https://github.com/topics/evaluation-driven-development) · [`red-team-testing`](https://github.com/topics/red-team-testing)
+
+**Core technologies / 핵심 기술**<br>
+[`model-context-protocol`](https://github.com/topics/model-context-protocol)
+
+**Project context / 프로젝트 맥락**<br>
+[`agentic-ai`](https://github.com/topics/agentic-ai) · [`ai-agents`](https://github.com/topics/ai-agents) · [`ai-assisted-development`](https://github.com/topics/ai-assisted-development) · [`automation`](https://github.com/topics/automation) · [`codex`](https://github.com/topics/codex) · [`developer-tools`](https://github.com/topics/developer-tools) · [`evaluation`](https://github.com/topics/evaluation) · [`hackathon`](https://github.com/topics/hackathon) · [`llm`](https://github.com/topics/llm) · [`multi-agent`](https://github.com/topics/multi-agent) · [`plugin-development`](https://github.com/topics/plugin-development) · [`prompt-engineering`](https://github.com/topics/prompt-engineering) · [`red-teaming`](https://github.com/topics/red-teaming) · [`security`](https://github.com/topics/security)
+
+**Implementation stack / 구현 스택**<br>
+[`mcp`](https://github.com/topics/mcp) · [`python`](https://github.com/topics/python)
