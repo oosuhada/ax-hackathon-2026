@@ -11,3 +11,8 @@
 - [RESOLVED] Lack of Liability limits covering Third-Party Data Accuracy and Hypothetical Projections.
 - [RESOLVED] Type instability due to missing restrictions on JSON Array/Object nesting in string fields.
 
+
+- [RESOLVED] Missing closing parenthesis in Handoff Contract.
+- [RESOLVED] Placeholder text remaining in Liability section.
+- [RESOLVED] Textual contradiction between 7-key constraint and 8-key schema.
+
