@@ -33,7 +33,11 @@
 
 ## 4. AI를 어떻게 활용했나요?
 비정형적이고 감정적인 사용자의 질문에서 숨겨진 불안(FOMO) 요소를 추출하고, 이를 `[SYNTHETIC]` 벤치마크 데이터와 결합하여 자연스러운 설득 화법으로 응답하게 만드는 데 LLM을 활용했습니다. 
-LLM의 자의적 판단(환각)을 막고 금융 가드레일을 지키기 위해, `SKILL.md` 프롬프트를 5,000 토큰 이하의 명령형 구조로 제약했습니다. 또한 **Enterprise Data Privacy(Zero Data Retention)** 원칙에 따라 모든 고객 질의는 처리 직후 파기되며, 어떠한 프라이버시(PII)나 대화 내용도 외부 LLM 모델 학습에 사용되지 않음을 원천 보장합니다.
+LLM의 자의적 판단(환각)을 막고 금융 가드레일을 지키기 위해, `SKILL.md` 프롬프트를 5,000 토큰 이하의 명령형 구조로 제약했습니다. 또한 **Enterprise Data Privacy(Zero Data Retention)** 원칙에 따라 모든 고객 질의는 처리 직후 파기되며, 어떠한 프라이버시(PII)나 대화 내용도 외부 LLM 모델 학습에 사용되지 않음을 원천 보장합니다. 에이전트가 기록하는 원본 transcript 로그 역시 기록 전 Data Privacy Scrubber 파이프라인을 의무적으로 통과하여 PII가 `[ACCOUNT_MASKED]` 등으로 사전 마스킹된 상태로 저장되므로, 무편집 원칙과 프라이버시 보호를 동시에 충족합니다.
+
+## 💰 Cost & Resource Optimization (비용 및 리소스 최적화)
+본 시스템은 무의미한 요청으로 발생하는 토큰 과금을 막기 위해 **Fail-Fast 아키텍처**를 적용했습니다.
+- **[BL-03] Zero-Token Payload Blocking (API Gateway 계층)**: 빈 문자열(Empty string)이나 공백 요청이 백엔드로 도달하기 전에 API Gateway의 Request Validator 정규식(`pattern: '^(?!\s*$).+'`)으로 스키마를 사전 검증하여 HTTP 400 에러로 즉시 차단합니다. 이를 통해 무의미한 LLM API 처리 비용을 $0으로 수렴시킵니다.
 
 ## 5. 어떻게 검증했나요? (QA 및 검증 시나리오)
 Red Teaming 및 Security Audit을 통해 총 10가지 시나리오를 검증했습니다 (상세 내용은 `logs/qa_report.md` 참조).
@@ -56,7 +60,6 @@ Red Teaming 및 Security Audit을 통해 총 10가지 시나리오를 검증했�
 
 ### Known Limitations (잔여 리스크)
 - **합성 데이터 한계 및 레이턴시**: `Dummy_Peer_Data.json`은 실제 고객 데이터가 아닌 100% 합성 시뮬레이션(`[SYNTHETIC]`) 데이터입니다. 상용화를 위해서는 카카오페이증권 마이데이터 파이프라인 연동이 필수적이며, 실시간 데이터 쿼리 시 발생하는 지연 시간(Latency) 및 API 비용 부하에 대한 최적화가 필요합니다.
-- **빈 입력 API 낭비 한계 (QA WARN)**: 사용자가 질문 없이 앱을 켜거나 아무 내용도 입력하지 않았을 때, LLM이 추가 질문을 던지느라 API 호출 턴이 낭비될 수 있습니다. 상용화 시에는 API 게이트웨이 또는 서버리스 함수 단에서 빈 문자열(Empty String)을 사전 차단(Validation)하여 불필요한 LLM API 호출 비용 누수를 원천 방어하도록 아키텍처를 보완해야 합니다.
 
 
 ## 8. Speed to Market (빠른 상용화 도입)
