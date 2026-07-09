@@ -51,3 +51,52 @@
   "return_risk_note": "N/A"
 }
 ```
+
+---
+## Candidate 4 (Gift Target & Specific Body Type - Normal Case)
+**Input:** "남자친구 선물로 줄 건데, 어깨가 넓은 편이고 예산은 15만원이야. 데일리로 입기 좋은 아우터 추천해줘."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "오버핏 비건 레더 자켓 (item_006)",
+  "why_this": "어깨 커버 오버핏, 데일리 TPO, 15만원 이하 예산 부합.",
+  "rejected_options": [
+    "슬림라이더(불편함)",
+    "무스탕(예산초과)",
+    "패턴블루종(호불호)"
+  ],
+  "confidence": "95%",
+  "return_risk_note": "오버핏으로 사이즈 미스 리스크 감소. [ROI: 반품 건당 3천원 절감]"
+}
+```
+
+---
+## Candidate 5 (Unrealistic Budget - Edge Case)
+**Input:** "겨울 소개팅용 패딩을 5천원 이하로 추천해줘. 마른 체형이야."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "N/A",
+  "why_this": "예산 5천원 이하 패딩 추천 불가. 예산 상향 필요.",
+  "rejected_options": [],
+  "confidence": "0%",
+  "return_risk_note": "N/A"
+}
+```
+
+---
+## Candidate 6 (Partial Constraints Provided - Ambiguous Case)
+**Input:** "이번 주말 결혼식 하객으로 갈 건데, 예산은 15만원이야. 어울리는 원피스 찾아줘."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "N/A",
+  "why_this": "하객룩, 예산 15만원 확인. 완벽 추천을 위해 체형 특징 정보 추가 요청.",
+  "rejected_options": [],
+  "confidence": "0%",
+  "return_risk_note": "N/A"
+}
+```
