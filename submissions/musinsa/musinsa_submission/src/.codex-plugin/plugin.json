@@ -2,6 +2,6 @@
   "name": "one-pick-decision-agent",
   "version": "1.0.0",
   "description": "무신사 1-Pick 종결형 에이전트. 결정 장애를 겪는 유저에게 조건에 맞는 단 하나의 상품만을 추천합니다.",
-  "author": "AX Hackathon Team",
-  "skills": "./skills/"
+  "author": "무신사 AX팀",
+  "skills": "../skills/"
 }

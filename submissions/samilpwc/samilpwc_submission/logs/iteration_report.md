@@ -243,8 +243,7 @@
 
 ### Judge Score
 - Score: 100/100
-- Status: 특수름 피로도
-도독 소형 부서 데이터 K-익명성 기준 마련 및 동형문자 차단까지 판단 품질이 강화됨. P0/P1/P2 모두 해소 완료.
+- Status: 특수문자/동형문자 방어와 소형 부서 데이터 K-익명성 기준 마련까지 판단 품질이 강화됨. P0/P1/P2 모두 해소 완료.
 
 ## Iteration 6 - 2026-07-09 17:10
 
@@ -556,8 +555,8 @@
 - Actual end: 2026-07-09 17:45
 
 ### Note
-- Iteration 12에서 적용된 DoW 방어 및 Indirect Injection 차단 로직 정상 동작 여부 시나리오 기반 확인은.
-- 추가 테스트 케이스: 특수 인코딩 페이로드(UTF-16, EBCDIC) 증세 시뮤레이션 검토.
+- Iteration 12에서 적용된 DoW 방어 및 Indirect Injection 차단 로직 정상 동작 여부를 시나리오 기반으로 확인.
+- 추가 테스트 케이스: 특수 인코딩 페이로드(UTF-16, EBCDIC) 증세 시뮬레이션 검토.
 - 신규 P0/P1 발견 사항 없음 (이전 라운드에서 해소됨).
 - Remaining Backlog: P0: 0, P1: 0, P2: 0, P3: 0
 
@@ -751,7 +750,7 @@
 ### Target Risk
 - Social Engineering / Logic Bomb (Time-conditional)
 ### Findings & Fixes
-- P2: 시간 조건부 로직(Logic Bomb) 리스크 검토 → SKILL.md 방어 루룰 적용 (기적용 확인)
+- P2: 시간 조건부 로직(Logic Bomb) 리스크 검토 → SKILL.md 방어 룰 적용 (기적용 확인)
 - P3: 소셜 엔지니어링 방어 신뢰도 강화 여부 검토
 ### Test Result
 - PASS (특정 날짜 조건부 필터 먹임 차단 확인)
