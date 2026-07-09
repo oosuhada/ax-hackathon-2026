@@ -1,5 +1,7 @@
-[2026-07-09T22:41:04+0900] README.md: Conversion 관련 표현 제거, Suitability Verification 보강
-[2026-07-09T22:43:47+0900] README.md: 보수적 ROI 추가, Future Work 내 ETF/채권 제거
 
-- `submissions/kakaopaysec/submission/README.md`: 60초 데모 피치 3문장 압축, Step 5 UX Micro-action (투자 성향 재진단 버튼) 명시.
+- `submissions/kakaopaysec/submission/README.md`: CS 방어율 40% 산정의 보수적 근거(금융권 고객센터 AI 평균 30~50% 벤치마크) 추가.
 
+## [2026-07-09T23:25:00+09:00] Iteration 3 Patches
+- `README.md` (Lines 3-11): 60초 피치를 심사위원용 Pain/Moment/Relief 구조로 변경.
+- `README.md` (Lines 21-25): ROI 수식 업데이트 (API 비용 $350/mo, CS 단가 2500원 조정, 오탐 수수료 기회비용 반영, AUM 보전 추가).
+- `README.md` (전역): '안전 자산 투자 라우팅' 삭제 및 '적합성 평가 기반 안내', '비식별화 데이터' 추가로 컴플라이언스 및 데이터 프라이버시 방어 강화.
