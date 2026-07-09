@@ -1,30 +1,20 @@
-[Hand-off Packet]
-What changed: 
-- Synchronized branch `parallel/golden-demo/samilpwc`
-- Created 3 golden demo candidates (Clear SOP Match, Missing SOP, PII Block).
-- Set up test_matrix, findings_backlog, patch_log, and iteration_report for Golden Demo generation loop.
+# Merge Packet: SamilPwC Golden Demo Iteration
 
-Files touched:
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/golden_demo_candidates.md`
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/iteration_report.md`
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/test_matrix.md`
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/findings_backlog.md`
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/patch_log.md`
-- `submissions/samilpwc/submission/logs/parallel/swarm-golden-demo/merge_packet.md`
+**Company**: SamilPwC
+**Phase**: QA & Polish
+**Primary Use Case**: SOP Dispute Resolution & Draft Generation
 
-Key decisions:
-- Included a Missing SOP and a PII specific candidate to emphasize zero-hallucination and privacy as key USPs.
-- Invoked 5 QA/compliance subagents concurrently to grade the demos.
-- Selected Candidate 2 (Missing SOP) as the primary README demo based on Evaluator Pitch Judge's 95/100 score.
-- Applied massive compliance and privacy overhauls (disclaimers, PII masking, language softening) across all outputs.
+## What Changed
+- Validated and refined 4 Golden Demo candidates.
+- Added `roi_metrics` JSON objects to explicitly show `estimated_human_review_cost_saved_usd` and `ai_inference_cost_usd` (Cost Estimator).
+- Added `draft_memo_for_partner` to Candidate 1 to provide immediate actionability and Relief for C-level (Pitch Judge).
+- Fixed PII echo vulnerabilities in the escalation reason, ensuring No-Echo privacy rules (Privacy Scrubber).
+- Changed definitive directives into advisory suggestions ("SOP-FIN-042 indicates potential allocation...") and added a bulletproof disclaimer to protect firm liability (Compliance Lawyer).
+- Added a new scenario (Candidate 4: Conflicting SOPs) demonstrating ambiguity resolution and policy gap escalation (QA Tester).
 
-Known risks:
-- None. All subagents gave their passing verdicts after modifications.
+## Known Risks
+- The frontend/UI representation of the `draft_memo_for_partner` vs the structured JSON is not yet defined.
+- Must ensure that the `codex-plugin-builder` prompt accurately reflects this new JSON schema.
 
-Validation done:
-- 5 Subagents passed the outputs.
-- All golden demo candidates now comply with Constitutional Priorities (Compliance, Anonymization).
-
-Next recommended action:
-- Update the main `README.md` with Candidate 2 (Missing SOP) and integrate the Evaluator's Pitch.
-- Proceed to the next Adaptive Cadence.
+## Next Recommended Action
+- Hand off to `submission-validator` and `codex-plugin-builder` to enforce these JSON outputs in the actual plugin prompt.
