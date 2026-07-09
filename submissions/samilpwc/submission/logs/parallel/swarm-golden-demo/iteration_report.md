@@ -15,4 +15,16 @@
 
 ## Iteration Progress
 - Golden Demo Candidates generated: 3
-- Waiting on Subagent feedback to synthesize best demo.
+- Best Demo Selected: Candidate 2
+- Mandatory Subagents Used:
+  | Subagent | Role | Used |
+  |---|---|---|
+  | evaluator-pitch-judge | Pitch Judge | Yes |
+  | qa-tester | QA Tester | Yes |
+  | compliance-lawyer | Compliance Lawyer | Yes |
+  | data-privacy-scrubber | Privacy Scrubber | Yes |
+  | cost-estimator | Cost Estimator | Yes |
+
+## Next Cadence
+- **Next Wake Scheduled At**: +60s from end of iteration 1
+- **Scheduler Task ID**: 07208755-4e7c-4bb1-8af0-73ded8d8216b/task-92
