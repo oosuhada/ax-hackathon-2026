@@ -41,10 +41,10 @@
 
 | ROI 축 | 상세 내용 | 비고 |
 |--------|-----------|------|
-| **1. Delivery Cost (수익)** | 주니어 컨설턴트 리서치 공수 90% 절감 (80h → 8h). 건당 약 720만 원 절감 (수학적 검증 완료) | **[ASSUMPTION]** |
-| **2. Inference Cost (비용)** | 문서 생성 API 토큰 비용: 1건당 평균 5,000 Tokens (약 3.5원). 인프라 구축 없는 초저비용 운영 | **[FACT]** |
-| **3. Rework Reduction (효율)** | 회색지대(Gray Area) 의사결정 재작업률 30% → 5%로 감소. 100건 기준 약 2,000h (약 2억 원) 절감 | **[ASSUMPTION]** |
-| **4. Compliance Risk (방어)** | SOP 미확인 시 Human-in-the-Loop 이관으로 환각 통제 및 데이터 유출/규제 위반 페널티 리스크 원천 차단 | **[ASSUMPTION]** |
+| **1. Delivery Cost (수익)** | 주니어 컨설턴트 리서치 공수 **90% 절감** (80h → 8h). 건당 약 **720만 원 절약** | **[ASSUMPTION]** |
+| **2. Inference Cost (비용)** | 문서 생성 API 토큰 비용: 1건당 평균 **5,000 Tokens (약 3.5원)**. 인프라 구축 없는 초저비용 운영 | **[FACT]** |
+| **3. Rework Reduction (효율)** | 회색지대(Gray Area) 의사결정 재작업률 **30% → 5%로 감소**. 100건 기준 약 **2,000h (약 2억 원) 절약** | **[ASSUMPTION]** |
+| **4. Compliance Risk (방어)** | SOP 미확인 시 Human-in-the-Loop 이관으로 환각 통제 및 데이터 유출/규제 위반 페널티 리스크 **원천 차단** | **[ASSUMPTION]** |
 
 ## 5. 핵심 운영 KPIs 및 아키텍처 리스크 방어
 - **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 방어 로직으로 무해한 데이터까지 Human 검토로 이관되는 비율을 모니터링하여 가드레일 민감도 튜닝.

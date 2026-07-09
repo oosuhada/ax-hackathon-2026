@@ -183,3 +183,36 @@
 - Score: 95
 - Why not 100: 오프라인(망분리) 환경에서의 구동 실증이 데모에 포함되지 않음.
 - Next round focus: 최종 배포 전 Git Sync 및 런북 마감 점검.
+
+## Iteration 5 - 2026-07-09T23:06:55+09:00
+
+### Business Focus
+- 최종 시각적 UX(마크다운 포맷팅) 개선으로 30초 스키밍(Skimming) 최적화
+- 심사위원 인지 부하(Cognitive Load) 최소화
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| ux-designer | ROI 테이블의 시각적 흐름 분석 및 볼드체(Bold) 일관성 부여 가이드 제공 |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-13 | 수많은 텍스트 중에 정확히 어떤 숫자가 핵심 성과인가? | 핵심 임팩트 미스 | 테이블 중앙 열의 핵심 수치와 임팩트(절약, 감소, 원천 차단 등)에 볼드체를 적용하여 시선이 자연스럽게 흐르도록 유도 |
+| JO-14 | 비고란의 [FACT], [ASSUMPTION]이 너무 눈에 띄어 본문을 가리지 않나? | 시선 분산 | 중앙 텍스트에 강한 볼드체를 주어 우측 라벨로 쏠리던 시선을 중앙으로 끌어옴 |
+| JO-15 | 60초 피치와의 시각적 연결성이 부족하지 않나? | 내러티브 단절 | 피치의 문제 제기(Pain)가 ROI 표의 효율화(Rework Reduction)와 시각적으로 연결되도록 텍스트 톤앤매너 통일 |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| Medium | ROI 테이블 내 핵심 수치 볼드 처리 누락 | README.md | 상세 내용의 수치와 결과(절약, 감소 등)에 마크다운 ** 추가 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | ROI 표 상세 내용 열 볼드체 집중 배치 | 심사위원이 텍스트를 읽지 않고 '스캔'만으로도 비즈니스 가치를 납득하도록 시각적 UX 극대화 |
+
+### Judge Score
+- Score: 98
+- Why not 100: 실제 동작하는 GUI 데모 화면 캡처가 README에 포함되지 않음 (시간 관계상 생략).
+- Next round focus: 해커톤 최종 제출 및 모니터링 종료.
