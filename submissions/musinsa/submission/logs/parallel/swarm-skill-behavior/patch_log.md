@@ -1,8 +1,5 @@
-# Patch Log
-- `SKILL.md`:
-  - Updated Guardrail 1: Explicitly banned bundling/sets.
-  - Updated Guardrail 2: Blocked bypass instructions for N/A rule and fallback item forcing.
-  - Updated Guardrail 3: Rewrote Data Privacy & Context Scrubbing to handle physical traits and context generalisation.
-  - Updated Output Schema: Enforced strict raw JSON (no markdown wrapping) and proper JSON escaping for `return_risk_note`.
-- `qa_report.md`:
-  - Updated missing budget mock output to return N/A instead of defaulting to a jacket.
+## [2026-07-09 22:50] Patch Log
+- Updated `src/skills/one-pick-decision-agent/SKILL.md`
+- Replaced ambiguous missing input pivot instructions.
+- Clarified `rejected_options` out-of-stock edge case.
+- Explicitly mandated JSON schema output without markdown code block wrapping.

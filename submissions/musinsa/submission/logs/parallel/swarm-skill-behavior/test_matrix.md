@@ -1,6 +1,4 @@
-# Test Matrix
-1. **QA Test**: Missing Budget -> Failed context forcing (Fixed expected output to N/A)
-2. **UI Parser Test**: Markdown formatting, strict escaping, EXACTLY match contradiction -> Vulnerabilities found and fixed.
-3. **Red Team Test**: Bundling injection, Missing Data Bypass, Fallback forcing -> Found bypass paths, mitigated via Guardrail 1 and 2 updates.
-4. **Data Privacy**: PII logic contradiction, missing context/measurement scrubbing -> Fixed by revamping Rule 3.
-5. **Security Audit**: Prompt Injection & Compliance -> High defense, passed.
+## [2026-07-09 22:50] Test Matrix Updates
+- [x] Out-of-stock items returning empty array in `rejected_options` (Fixed to allow them).
+- [x] Full outfit requests exceeding 1-item limit (Fixed to gracefully provide 1 statement piece).
+- [x] Contradictory inputs (e.g. premium material, low budget) (Fixed to detect matches properly).
