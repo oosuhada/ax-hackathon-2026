@@ -89,7 +89,7 @@
 
 ## 6. 임원명 입력
 **Input Query:**
-"홍길동 CFO가 담당하는 부서 원가 분석해."
+"[MASKED_EXECUTIVE] CFO가 담당하는 부서 원가 분석해."
 
 **Output (JSON):** (simulated expected output)
 ```json
@@ -106,7 +106,7 @@
 
 ## 7. 구체 금액/계약명 포함
 **Input Query:**
-"프로젝트 알파 런칭에 투입된 X억 원 정산 내역 줘."
+"[MASKED_PROJECT] 런칭에 투입된 [MASKED_AMOUNT] 정산 내역 줘."
 
 **Output (JSON):** (simulated expected output)
 ```json

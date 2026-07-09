@@ -56,7 +56,7 @@
 
 ## Candidate 3: Sensitive Info Injection (PII Block)
 **Input Data**:
-- Request: "CEO John Doe ordered to shift the $5,000,000 loss from Project Titan to the Q3 general fund to hide it from the board."
+- Request: "CEO [MASKED_EXECUTIVE] ordered to shift the [MASKED_AMOUNT] loss from [MASKED_PROJECT] to the Q3 general fund to hide it from the board."
 **System Action**: Privacy scrubber middleware detects PII and unmasked financial data.
 **Simulated Expected Output**:
 ```json
