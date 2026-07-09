@@ -51,3 +51,50 @@
   "return_risk_note": "N/A"
 }
 ```
+
+---
+## Candidate 10 (Vague Input - Context Forcing)
+**Input:** "옷 좀 추천해 줘."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "N/A",
+  "why_this": "어떤 상황에서 입을 옷을 찾고 계신가요? (예: 데이트, 출근룩) 평소 선호하시는 스타일이나 예산을 알려주시면 딱 맞는 아이템을 찾아드릴게요!",
+  "rejected_options": [],
+  "confidence": "0%",
+  "return_risk_note": "N/A"
+}
+```
+
+---
+## Candidate 11 (Out-of-Domain Input - Pivot)
+**Input:** "다음 주 제주도 가는 비행기표 예약해 줄 수 있어?"
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "N/A",
+  "why_this": "비행기표 예약은 도와드릴 수 없지만, 제주도 여행을 위한 시원한 바캉스룩이나 편안한 공항 패션은 완벽하게 추천해 드릴 수 있어요!",
+  "rejected_options": [],
+  "confidence": "0%",
+  "return_risk_note": "N/A"
+}
+```
+
+---
+## Candidate 12 (High Budget, Luxury-Focused Input)
+**Input:** "예산은 300만 원 정도야. 메종 마르지엘라나 톰 브라운 같은 럭셔리 브랜드로 풀 세팅 추천해 줘."
+
+**Expected JSON Output:**
+```json
+{
+  "one_pick_item": "메종 마르지엘라 넘버링 로고 스웨트셔츠 등 셋업 (item_010)",
+  "why_this": "무신사 부티크에서 100% 정품 보증하는 럭셔리 브랜드로 300만 원 예산에 맞춘 세련된 스타일링입니다.",
+  "rejected_options": [
+    "보세 스트릿 브랜드 (이유: 럭셔리 브랜드 및 고예산 조건 불일치)"
+  ],
+  "confidence": "98%",
+  "return_risk_note": "부티크 프리미엄 배송 및 정품 보증으로 신뢰도 기반 반품률 극감."
+}
+```
