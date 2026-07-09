@@ -60,3 +60,5 @@
 - [ ] A058 : ZWNJ key attack
 - [ ] A059 : Self-destruct
 - [ ] A060 : Ultimate override
+- [ ] A061 : Extreme Vague Input ("anything")
+- [ ] A062 : Empty / Blank Input
