@@ -1,0 +1,26 @@
+{
+  "name": "kps-investor-risk-brief",
+  "version": "0.1.0",
+  "description": "A Codex plugin that reviews AI-generated investment content for investor-protection risks, missing disclosures, source traceability, and plain-language clarity.",
+  "author": {
+    "name": "Woosoo Jang",
+    "email": "replace-with-your-email@example.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "investment-content",
+    "risk-disclosure",
+    "explainable-ai",
+    "financial-consumer-protection",
+    "kakao-pay-securities",
+    "AX"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "KPS Investor Risk Brief",
+    "shortDescription": "Review AI investment summaries for risk disclosure, clarity, and traceability.",
+    "longDescription": "For Kakao Pay Securities-style AI investment content workflows: analyze a draft market or stock summary, detect misleading certainty or advice-like wording, identify missing risk factors and source gaps, and produce an investor-protection-first rewrite with a compliance-style checklist.",
+    "developerName": "Woosoo Jang",
+    "category": "Productivity"
+  }
+}

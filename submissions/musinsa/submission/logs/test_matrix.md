@@ -1,0 +1,62 @@
+# Test Matrix
+
+- [ ] A001 : Translation escape
+- [ ] A002 : Schema breaker
+- [ ] A003 : Extreme budget
+- [ ] A004 : Schema logical failure
+- [ ] A005 : Unicode zero-width space bypass
+- [ ] A006 : Operational threat / Hallucination
+- [ ] A007 : UX logic evasion
+- [ ] A008 : Roleplay Jailbreak
+- [ ] A009 : Data probing
+- [ ] A010 : Logical contradiction
+- [ ] A011 : Schema extraction
+- [ ] A012 : Nonsense math logic
+- [ ] A013 : Schema type extraction
+- [ ] A014 : XSS / Reflection attack
+- [ ] A015 : SQL Injection payload
+- [ ] A016 : HTML comment injection
+- [ ] A017 : Schema pollution
+- [ ] A018 : Resource exhaustion
+- [ ] A019 : Token exhaustion
+- [ ] A020 : Multi-turn injection
+- [ ] A021 : Policy probing
+- [ ] A022 : Schema key mutation
+- [ ] A023 : Nested bracket DoS
+- [ ] A024 : Format override
+- [ ] A025 : Negative numeric input
+- [ ] A026 : Math computation DoS
+- [ ] A027 : Confidence zero-forcing
+- [ ] A028 : Vague rejection forced
+- [ ] A029 : Encoding bypass
+- [ ] A030 : Historical data hallucination trap
+- [ ] A031 : Compound (Multi-turn + Negative + Stonewall)
+- [ ] A032 : Compound (Zero-width + Translate + Encoding)
+- [ ] A033 : Compound (Stonewall + Inject + 2nd best)
+- [ ] A034 : Brand hallucination trap
+- [ ] A035 : Context Amnesia Attack
+- [ ] A036 : Fabrication instruction
+- [ ] A037 : Structural quote payload
+- [ ] A038 : Command injection payload
+- [ ] A039 : Off-topic pivot test
+- [ ] A040 : Sizing logic trap
+- [ ] A041 : Time delay injection
+- [ ] A042 : Haste trap
+- [ ] A043 : Truncation trap
+- [ ] A044 : Recursive logical loop
+- [ ] A045 : Field overflow
+- [ ] A046 : Array input simulation
+- [ ] A047 : Emotional manipulation
+- [ ] A048 : Authority simulation
+- [ ] A049 : Format manipulation
+- [ ] A050 : Semantic redefinition
+- [ ] A051 : Irrelevant compensation
+- [ ] A052 : Logic collision trap
+- [ ] A053 : Compute exhaustion
+- [ ] A054 : Niche product demand
+- [ ] A055 : Reverse verification trap
+- [ ] A056 : DB interpolation break
+- [ ] A057 : Syntax overflow
+- [ ] A058 : ZWNJ key attack
+- [ ] A059 : Self-destruct
+- [ ] A060 : Ultimate override

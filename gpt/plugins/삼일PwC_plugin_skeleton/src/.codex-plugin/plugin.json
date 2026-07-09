@@ -1,0 +1,26 @@
+{
+  "name": "samil-ax-usecase-prioritizer",
+  "version": "0.1.0",
+  "description": "A Codex plugin that converts business process pain points into prioritized AX use cases, PoC plans, risk checks, and executive-ready summaries.",
+  "author": {
+    "name": "Woosoo Jang",
+    "email": "replace-with-your-email@example.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "samil-pwc",
+    "AX",
+    "usecase-prioritization",
+    "consulting",
+    "genai",
+    "digital-transformation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Samil AX Use Case Prioritizer",
+    "shortDescription": "Prioritize enterprise AI transformation use cases and PoC plans.",
+    "longDescription": "For Samil PwC-style AX consulting workflows: analyze business processes, pain points, data availability, risk, and expected impact to generate an AX use-case portfolio, prioritization matrix, PoC roadmap, governance checklist, and executive one-pager.",
+    "developerName": "Woosoo Jang",
+    "category": "Productivity"
+  }
+}

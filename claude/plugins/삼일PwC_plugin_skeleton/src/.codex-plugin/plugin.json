@@ -1,0 +1,8 @@
+{
+  "name": "audit-prep-companion",
+  "version": "0.1.0",
+  "description": "회계법인 저연차 스텝이 감사 조서·과거 자료를 사내 AI 감사플랫폼에 학습시키기 전, 자료를 표준화된 포맷으로 사전 정리해주는 플러그인. 'AI 도입 후 오히려 학습 준비 과정에서 업무시간이 늘어난다'는 실무 인터뷰(인베스트조선 2026.3)를 문제 배경으로 설계됨. 삼일PwC가 이미 보유한 Tax Agent, K-SOX AI, 리스 AI 등과 경쟁하지 않고, 그 앞단(자료 정리) 공백을 보완하는 것을 목표로 함.",
+  "author": "TODO: 대표님 이름/닉네임",
+  "entrypoint": "skills/audit-prep-companion/SKILL.md",
+  "tags": ["accounting", "audit", "workflow-automation", "samil-pwc"]
+}

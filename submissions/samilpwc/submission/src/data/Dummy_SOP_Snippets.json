@@ -1,0 +1,15 @@
+{
+  "_label": "[SYNTHETIC]",
+  "sop_snippets": [
+    {
+      "sop_id": "SOP-FIN-042",
+      "category": "Cost Allocation",
+      "rule_text": "If a business unit's R&D cost allocation exceeds 50% of its total operational expenses, the unit must demonstrate a minimum of 20% Quarter-over-Quarter revenue growth. Otherwise, a strategic review is required to prevent misaligned investments."
+    },
+    {
+      "sop_id": "SOP-HR-011",
+      "category": "Performance Management",
+      "rule_text": "Business units with headcount exceeding 100 must maintain a minimum performance score of 80 to qualify for standard baseline funding."
+    }
+  ]
+}

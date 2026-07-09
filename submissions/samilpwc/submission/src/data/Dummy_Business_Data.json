@@ -1,0 +1,37 @@
+{
+  "_label": "[SYNTHETIC]",
+  "company_id": "SYNTH_CORP_999",
+  "business_unit_metrics": {
+    "Unit_A": {
+      "headcount": 120,
+      "performance_score": 85
+    },
+    "Unit_B": {
+      "headcount": 45,
+      "performance_score": 92
+    },
+    "Unit_C": {
+      "headcount": 10,
+      "performance_score": 50
+    }
+  },
+  "cost_allocations": {
+    "Unit_A": {
+      "marketing_cost": 500000,
+      "rnd_cost": 200000
+    },
+    "Unit_B": {
+      "marketing_cost": 150000,
+      "rnd_cost": 600000
+    },
+    "Unit_C": {
+      "marketing_cost": 5000000,
+      "rnd_cost": 100000
+    }
+  },
+  "revenue_trends": {
+    "Q1": { "Unit_A": 800000, "Unit_B": 400000, "Unit_C": 100000 },
+    "Q2": { "Unit_A": 820000, "Unit_B": 450000, "Unit_C": 120000 },
+    "Q3": { "Unit_A": 790000, "Unit_B": 850000, "Unit_C": 5000000 }
+  }
+}

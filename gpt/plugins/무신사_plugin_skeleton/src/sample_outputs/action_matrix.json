@@ -1,0 +1,61 @@
+[
+  {
+    "theme": "color_photo",
+    "count": 3,
+    "evidence": [
+      "핏이 예쁘고 사진이랑 비슷해요. 다만 소매가 조금 긴 편입니다.",
+      "상세페이지 색보다 실제 색이 노란 느낌이에요. 반품 고민했습니다.",
+      "출근룩으로 좋아요. 코디 사진이 더 많으면 다른 색도 사고 싶어요."
+    ],
+    "recommended_action": "Add natural-light photos and color disclaimer by option.",
+    "action_type": "Detail Page Fix"
+  },
+  {
+    "theme": "material_quality",
+    "count": 3,
+    "evidence": [
+      "재질은 괜찮은데 허리가 생각보다 작아요. 사이즈표가 더 자세했으면 좋겠어요.",
+      "배송은 빨랐고 포장도 깔끔했어요. 얇아서 한겨울에는 추울 것 같아요.",
+      "한 번 입었는데 보풀이 생겼어요. 가격 대비 품질이 아쉽습니다."
+    ],
+    "recommended_action": "Clarify material thickness/care and investigate quality issues such as pilling.",
+    "action_type": "Product Improvement"
+  },
+  {
+    "theme": "size_fit",
+    "count": 2,
+    "evidence": [
+      "핏이 예쁘고 사진이랑 비슷해요. 다만 소매가 조금 긴 편입니다.",
+      "재질은 괜찮은데 허리가 생각보다 작아요. 사이즈표가 더 자세했으면 좋겠어요."
+    ],
+    "recommended_action": "Add clearer fit notes, option-level sizing guidance, and reviewer size examples.",
+    "action_type": "Detail Page Fix"
+  },
+  {
+    "theme": "shipping_packaging",
+    "count": 1,
+    "evidence": [
+      "배송은 빨랐고 포장도 깔끔했어요. 얇아서 한겨울에는 추울 것 같아요."
+    ],
+    "recommended_action": "Preserve shipping/packaging strength as review-highlight copy.",
+    "action_type": "Marketing Opportunity"
+  },
+  {
+    "theme": "styling_marketing",
+    "count": 1,
+    "evidence": [
+      "출근룩으로 좋아요. 코디 사진이 더 많으면 다른 색도 사고 싶어요."
+    ],
+    "recommended_action": "Add styling photos and cross-sell copy based on positive use cases.",
+    "action_type": "Marketing Opportunity"
+  },
+  {
+    "theme": "price_value",
+    "count": 1,
+    "evidence": [
+      "한 번 입었는데 보풀이 생겼어요. 가격 대비 품질이 아쉽습니다."
+    ],
+    "recommended_action": "Reframe value proposition or address quality concerns.",
+    "action_type": "Product/Marketing"
+  }
+]
