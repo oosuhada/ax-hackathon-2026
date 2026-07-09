@@ -150,3 +150,36 @@
 - Score: 91
 - Why not 100: 해커톤 24시간 MVP라는 태생적 한계(Simulated RAG)로 인한 인프라 실증 부족
 - Next round focus: N/A (제출 준비 완료)
+
+## Iteration 4 - 2026-07-09T23:04:17+09:00
+
+### Business Focus
+- 최종 극한의 Red Teaming 및 방어 논리 점검 (Time-boxed Fallback)
+- Semantic Reasoning 강조 및 DoS 공격 리스크 검토
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| adversarial-red-teamer | 극한의 태클 3개(Judge Objections) 도출 및 방어 논리 수립 |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-10 | 단순 텍스트 매칭이라면 LLM이 왜 필요한가? | 기술적 필요성 의심 | 단순 키워드 검색이 아니라, 상충되는 규정 간의 문맥과 행간을 파악하는 Semantic Reasoning 엔진임을 강조 |
+| JO-11 | 초기 구축 비용(Vector DB 등)을 누락하여 ROI가 부풀려진 것 아닌가? | ROI 과장 의심 | 초기 온보딩 공수가 있으나, 반복되는 분쟁 건당 운영 비용(API 3.5원)이 극단적으로 낮아 3개월 내 BEP 달성 가능함을 강조 |
+| JO-12 | 악의적으로 애매한 데이터만 넣어 컨설턴트에게 알람 폭탄(DoS)을 유도하면? | 운영 마비 리스크 | 어뷰징 패턴(반복된 회색지대 유발) 감지 시 시스템 레벨에서 해당 유저/부서의 요청을 차단하는 Rate-limiting 적용 예정 |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| Medium | AI 활용(Q4) 항목이 단순 요약/매칭으로 오인될 여지 | README.md | Semantic Explainability 로 명명하여 키워드 검색과의 차별화 명시 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | Q4 항목에 Semantic Reasoning 및 키워드 검색 차별화 문구 추가 | LLM 도입의 기술적 정당성(Justification) 방어 |
+
+### Judge Score
+- Score: 95
+- Why not 100: 오프라인(망분리) 환경에서의 구동 실증이 데모에 포함되지 않음.
+- Next round focus: 최종 배포 전 Git Sync 및 런북 마감 점검.
