@@ -329,3 +329,42 @@
 - Why not 100: 프롬프트 인젝션 및 PII 우회에 대한 구체적 방어 엣지 케이스 로깅 추가 요망
 - Next round focus: 실제 QA-Tester를 구동하여 엣지케이스 테스트 결과(PII 차단 등) 보완
 - Next Wake Scheduled At: Scheduled for 1 minute later
+
+## Iteration 3 - 2026-07-09 23:28:00
+
+### Business Focus
+- Edge-Case 방어 증명 보강, 3대 아키텍처 리스크(Retrieval, Storage, Non-determinism) 방어, 60초 피치 최종 폴리싱
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 아키텍처 리스크에 대한 Mitigation 전략(Semantic Caching 등)을 Section 6에 추가 |
+| qa-tester | Base64 PII 주입, 스키마 파괴 프롬프트 인젝션 등 고도화된 엣지케이스 테스트 결과 증빙 반영 |
+| roi-architect | 60초 피치의 [Relief] 영역을 '책임 방어막(Liability Shield)' 내러티브로 최종 정제 |
+| compliance-lawyer | (결합 완료) |
+| cost-estimator | (결합 완료) |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-07 | 파트너 이관 시 시간 단축에 대한 근거 | Medium | 기존 4시간이 걸리던 문서 대조를 AI가 Audit Trail 형태로 쟁점만 추출하므로 30분 내로 의사결정이 가능함을 데모 시연으로 증명. |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| High | 아키텍처 한계에 대한 명확한 Mitigation 부재 | README.md | Section 6에 Semantic Caching, Cold Storage Tiering, Temperature=0.0 제어 전략 공식화 |
+| High | 인젝션 차단이 단순 키워드 필터링 수준으로 보임 | README.md | Section 2 방어 매트릭스에 Base64 PII 은닉 우회 방어 및 스키마 파괴 방어 구체화 |
+| High | 60초 피치가 여전히 기능적 설명에 머무름 | README.md | 경영진의 핵심 니즈인 '책임 방어막(Liability Shield)'으로 재포지셔닝 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | Section 1 [Relief] 교체 | C-Level의 책임 회피/방어 니즈를 완벽하게 타겟팅하기 위해 |
+| README.md | Section 2 방어 매트릭스 업데이트 | 고도화된 엣지케이스 방어(Base64) 추가로 기술적 깊이 어필 |
+| README.md | Section 6 Known Limitations 강화 | 3대 아키텍처 한계를 방어하는 상용화 로드맵 명시 |
+
+### Judge Score
+- Score: 98/100
+- Why not 100: 프론트엔드 GUI 부재
+- Next round focus: Deepening pass (Readback/Re-test) 또는 제출 패키징
+- Next Wake Scheduled At: Scheduled for 1 minute later
