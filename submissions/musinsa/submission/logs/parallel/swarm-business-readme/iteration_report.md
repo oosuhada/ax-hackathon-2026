@@ -47,3 +47,46 @@
 - Score: 95
 - Why not 100: The architecture relies on the Pre-LLM gateway which is not explicitly modeled in code.
 - Next round focus: Complete the 60-second pitch rehearsal and prepare the final presentation materials.
+
+## Iteration 1 - 2026-07-09 23:22:45
+
+### Business Focus
+- 심사위원 관점의 ROI 및 60초 피치 논리 방어력 강화
+- Bracketing 반품 논리 도입 및 PII 데이터 처리 규정 명문화
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 60초 피치 평가, 3대 반박 질문 도출, Interactive Pivot 로직 추가 |
+| roi-architect | ROI 산식 검증 (60B -> 600B KRW 절감 보정), Bracketing 논리 연결 |
+| qa-tester | 다중 추천 강요(Choice Overload) 엣지 케이스 방어 로직 추가 |
+| data-privacy-scrubber | 민감 프레퍼런스 데이터 익명화 및 범주화 처리 로직 명문화 |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| Q1 | 1-Pick이 주관적 취향에 안 맞으면 이탈하지 않나? | HIGH | 대화형 Pivot으로 배제 근거 유지한 채 해당 피드백만 반영해 새 1-Pick 즉시 제시 |
+| Q2 | AI 결정을 어떻게 신뢰하나? (악성재고 밀어내기 의심) | HIGH | 비교 대상을 명확히 브리핑하여 선택의 투명성 제공 |
+| Q3 | 1-Pick 종결형은 교차 판매(Cross-selling) 기회 날리는 것 아닌가? | MEDIUM | 결제 시간 단축 후 남는 주의력을 활용해 연속 1-Pick 제안으로 교차 판매 유도 |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| P1 | 반품비용 과소계상 (3,000원) | README.md | 재포장/검수 고려하여 3만원으로 보정 (600억 절감으로 상향) |
+| P1 | 1-Pick 실패 시나리오 부재 | README.md | Interactive Pivot (대화형 피벗 방어막) 로직 추가 |
+| P2 | PII 처리 구체화 미흡 | README.md | 체형/예산 데이터 익명화 문구 삽입 |
+| P2 | 다중추천 요구 엣지케이스 누락 | README.md | Choice Overload Prevention 방어 로직 명시 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | ROI 600억 보정 및 Bracketing 도입 | 실제 이커머스 비용 반영 |
+| README.md | Interactive Pivot 방어막 추가 | 1-Pick 실패 시 이탈 방어 |
+| README.md | 다중 추천 방어 로직 삽입 | Choice Overload 강요 방어 |
+| README.md | PII Scrubber 문구 구체화 | 보안/컴플라이언스 신뢰도 상승 |
+
+### Judge Score
+- Score: 82
+- Why not 100: 실패 시나리오(Fallback) 및 대화형 피벗 데모 트랜스크립트 부재
+- Next round focus: 실제 demo_transcript.md에 Pivot 시나리오 보강 및 SKILL.md 프롬프트 튜닝
+
