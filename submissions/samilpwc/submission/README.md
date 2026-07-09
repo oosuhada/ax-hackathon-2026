@@ -53,10 +53,10 @@
 | **11. Audit Consistency** | 인간 컨설턴트와 달리 피로도(Fatigue)나 감정에 치우치지 않고 100% 동일한 SOP 기준으로 일관된 판단을 내림으로써 감사 품질의 균일성(Quality Consistency) 극대화 | **[FACT]** |
 | **12. Executive Communication Efficiency** | C-Level 경영진이 선호하는 단답형/객관적 톤앤매너(Dry Tone)로 보고서를 자동 작성하여, 임원진의 오독 방지 및 의사결정 커뮤니케이션 속도 대폭 향상 (정성적 지표: Conflict Resolution Index(CRI) 대시보드를 통한 의사소통 효율성 정량화) | **[ASSUMPTION]** |
 | **13. API Cost Spike Protection (DoW 방어)** | 배열 확장(Array Expansion) 등을 이용한 대규모 데이터 폭탄 주입 공격(Denial of Wallet)을 선제 차단하여, 악의적 API 토큰 과열 청구 리스크를 원천 제거 | **[FACT]** |
-| **14. System Uptime & Resilience Savings** | 극단적인 엣지 케이스 공격(ReDoS, DoW, Stack Overflow 등)을 원천 방어하여, 시스템 크래시로 인한 비즈니스 중단(Downtime) 시간 및 긴급 복구 비용 대폭 절감 | **[FACT]** |
+| **14. System Uptime & Resilience Savings** | 극단적인 엣지 케이스 공격(시스템 마비 유발, DoW 등)을 원천 방어하여, 시스템 크래시로 인한 비즈니스 중단(Downtime) 시간 및 긴급 복구 비용 대폭 절감 | **[FACT]** |
 | **15. Intellectual Property (IP) Protection** | Prompt Extraction 방어 가드레일을 통해 내부 감사 방법론과 판단 로직(SOP)을 경쟁사로부터 방어하여 기업의 핵심 무형자산(IP) 유출 리스크 최소화 | **[FACT]** |
-| **16. Obfuscated Attack Neutralization** | Base64/Hex 인코딩 등으로 우회하는 난독화 공격(Token Smuggling)을 차단하여, 고도화된 타겟형 해킹 방어에 소요되는 사이버 보안 유지비용 절감 | **[FACT]** |
-| **17. Zero-Day Exfiltration Avoidance** | Markdown 이미지 렌더링 등을 활용한 제로데이급 데이터 탈취(Exfiltration) 공격을 사전에 막아내어, 2차 피해 및 영업비밀 유출 배상금 전면 회피 | **[FACT]** |
+| **16. Obfuscated Attack Neutralization** | Base64/Hex 인코딩 등으로 우회하는 난독화 공격(보안 필터 우회 및 데이터 빼돌리기)을 차단하여, 고도화된 타겟형 해킹 방어에 소요되는 사이버 보안 유지비용 절감 | **[FACT]** |
+| **17. Zero-Day Exfiltration Avoidance** | Markdown 이미지 렌더링 등을 활용한 제로데이급 영업비밀 탈취 공격을 사전에 막아내어, 2차 피해 및 배상금 전면 회피 | **[FACT]** |
 | **18. Logic Bomb Resilience** | 시간 조건부 트리거(Time-bomb)를 활용한 논리 폭탄 공격을 무력화함으로써, 장기적인 시스템 운용의 백도어 리스크를 0%로 수렴 | **[FACT]** |
 | **19. Multi-modal Threat Defense** | 음성/텍스트 변환(TTS)을 통해 삽입되는 딥페이크 지시어 및 동음이의어(Homophone) 우회 공격을 차단하여, C-Level 음성 위조(Voice Cloning) 사기 피해 손실액(Insurance Cost) 사전 절감 | **[FACT]** |
 | **20. Automated Threat Intel Generation** | 취약점 스캐너(Automated Scanner Probing)의 정찰 시도를 감지하고 차단함으로써 사내 보안관제팀(SOC)에 위협 인텔리전스를 자동 제공하여 SOC 운영 비용 효율화 | **[FACT]** |
@@ -65,7 +65,7 @@
 
 ## 7. 운영(Operational) KPIs
 - **정상 재승인 비율 (False Positive Escalation Rate)**: 과도한 Compliance-First 가드레일로 인해 무해한 데이터가 인간 검토(Human-in-the-Loop)로 이관되어 병목을 일으키지 않도록, 이관 건수 중 "수정 없이 단순 통과"된 건의 비율을 모니터링하여 방어 민감도를 지속 튜닝합니다.
-  - *Dashboard UI/UX 제안*: Dual-Axis 차트를 통해 일일 검토 이관량(Bar)과 정상 재승인 비율(Line)을 시각화하고, 특정 임계치(Threshold) 초과 시 원인이 되는 룰을 식별하는 **Escalation Efficiency & Sensitivity Tracker** 위젯 구현을 권고합니다.
+  - *Executive Dashboard UI/UX 제안*: 경영진 대시보드에 '실시간 의사결정 지연율(Decision Bottleneck Index)'을 직관적인 듀얼 축(Dual-Axis) 차트로 시각화하여, 사내 규정에 의한 업무 지연 구간을 즉각적으로 파악하고 조치할 수 있도록 위젯 구현을 권고합니다.
 - **Anomaly Score Threshold Monitoring**: 여러 미세한 방어 룰(Zero-width 문자, 오타 등)이 개별 임계치를 넘지 않더라도, 누적된 기형적 패턴이 특정 점수(Anomaly Score)를 초과하면 자동으로 Human-in-the-loop 검토를 강제하는 구조를 도입합니다.
 - **Threat Intelligence Map**: 악의적인 데이터 주입(Injection, DoW 등) 시도를 실시간으로 추적하여, 경영진이 시스템이 방어해낸 엣지 케이스 공격들을 시각적으로 체감할 수 있는 **Threat Defense Map** 위젯을 추가합니다.
 - **Strict JSON Schema Validator Middleware**: 애플리케이션 레벨(Rust/Go)에서 LLM에 도달하기 전에 초고속으로 Cyclic JSON 및 스키마 변조를 1차 차단하는 미들웨어 아키텍처를 도입하여 AI 서버 부하를 최소화합니다.
