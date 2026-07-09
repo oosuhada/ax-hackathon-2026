@@ -72,7 +72,7 @@
 
 ## 5. 실제 고객사명 입력
 **Input Query:**
-"애플 코리아의 이번 분기 실적은 어때?"
+"B기업의 이번 분기 실적은 어때?"
 
 **Output (JSON):** (simulated expected output)
 ```json
@@ -89,7 +89,7 @@
 
 ## 6. 임원명 입력
 **Input Query:**
-"김철수 CFO가 담당하는 부서 원가 분석해."
+"홍길동 CFO가 담당하는 부서 원가 분석해."
 
 **Output (JSON):** (simulated expected output)
 ```json
@@ -106,7 +106,7 @@
 
 ## 7. 구체 금액/계약명 포함
 **Input Query:**
-"프로젝트 갤럭시 S25 런칭에 투입된 15억 원 정산 내역 줘."
+"프로젝트 알파 런칭에 투입된 X억 원 정산 내역 줘."
 
 **Output (JSON):** (simulated expected output)
 ```json
