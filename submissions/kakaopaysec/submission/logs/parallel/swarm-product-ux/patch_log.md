@@ -4,3 +4,10 @@
 - `[2026-07-09]` src/skills/fomo-defense-agent/SKILL.md: 면책 조항 축소(약 50자)하여 UX 및 토큰 소모 최적화.
 - `[2026-07-09]` src/skills/fomo-defense-agent/SKILL.md: `next_safe_action`을 투자성향 진단 및 전문 상담 연결 검토로 수정.
 - `[2026-07-09]` src/skills/fomo-defense-agent/SKILL.md: 사전 마스킹된 `[ACCOUNT_MASKED]` 처리 방식 적용하여 개인정보 보호 강화.
+- `[2026-07-09]` README.md (Iteration 2): Fail-Fast 아키텍처 및 Zero-Token Payload Blocking (BL-03) 추가하여 비용 최적화.
+- `[2026-07-09]` README.md (Iteration 2): Data Privacy Scrubber를 원본 로그 기록 전 의무적으로 통과시킴을 명시하여 심사위원 프라이버시 의구심(UX-06) 해소.
+- `[2026-07-09]` src/skills/fomo-defense-agent/SKILL.md (Iteration 2): 로깅 계층(BL-01)의 평문 저장 금지를 위해 Data Privacy Scrubber 역할을 지시어에 신설.
+- `[2026-07-09]` src/skills/fomo-defense-agent/SKILL.md (Iteration 2): "안전 자산" 관련 간접 권유 요소를 완전히 제거하고 `show_suitability_routing_button`으로 파라미터명 교체.
+- `[2026-07-09]` README.md (Iteration 3): 60초 데모 피치를 프론트엔드 애니메이션 인터랙션(과부하 스크롤링 -> 글로우 팝업 버튼 -> 마법 큐레이션) 시나리오로 재작성.
+- `[2026-07-09]` README.md (Iteration 3): "Frontend Integration & Security" 섹션 추가 (3-Tier Data Scrubbing, Zero-Cost Defense, Compliance Handoff).
+- `[2026-07-09]` Artifacts (Iteration 3): 프론트엔드 QA 자동화 스크립트 초안(`qa_automation_proposal_bl04.md`) 및 컴플라이언스 라우팅 체크리스트(`frontend_compliance_checklist.md`) 생성.

@@ -1,4 +1,4 @@
 # Findings Backlog
-- **BL-01 (Privacy)**: 현재 로그 시스템(`logs/transcript.jsonl`) 내 사용자 프롬프트 평문 저장 이슈. (로깅 계층 필터링 추가 필요)
-- **BL-02 (Architecture)**: 실제 API 환경에서 사용하기 위한 Pre-LLM Data Scrubber(정규표현식, NER 등) 도입 필요.
-- **BL-03 (Performance)**: 빈 입력 시 불필요한 LLM 호출 낭비 (API Gateway 단의 필터링 아키텍처 적용 필요).
+- **BL-04**: 엣지 케이스 로직 검증 자동화 스크립트 작성 완료 (QA Tester Artifact) -> 프론트엔드 레포지토리 병합 후 실행 필요.
+- **BL-05**: 프론트엔드 라우팅 변수(`show_suitability_routing_button`) 연동 시나리오 및 컴플라이언스 락(Lock) 체크리스트 확보 완료.
+- **BL-06**: (신규) 데모 비디오 촬영 시, Pitch Judge가 제안한 '정보 과부하 스크롤링 -> 글로우 팝업 버튼 -> 마법 같은 큐레이션 애니메이션'의 실제 시연 영상화 필요.
