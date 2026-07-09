@@ -1,0 +1,1 @@
+- 2026-07-09T22:42:27+09:00 | Iteration 1 | README.md & SKILL.md UX updated for C-level auditability.
