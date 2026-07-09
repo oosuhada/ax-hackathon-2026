@@ -20,3 +20,8 @@
 ## Scheduled Follow-up
 - **Next Wake Scheduled At:** 2026-07-09T22:43:00+09:00
 - **Task ID:** e25f1280-7cb0-4f56-80f8-b1dbaf11c194/task-47
+
+## Round 2 Summary (Deepening Pass)
+- **Focus:** Addressed evaluator feedback regarding business ROI.
+- **Action:** Updated Candidate 1 `return_risk_note` to include "반품 리스크 30% 감소" and ROI metrics.
+- **Result:** The Golden Demo now directly links "Zero Decision Fatigue" to Musinsa's financial metrics.
