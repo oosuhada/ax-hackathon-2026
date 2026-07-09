@@ -7,15 +7,15 @@
 ## Subagent Validation
 | Subagent | Role | Status | Findings |
 |---|---|---|---|
-| evaluator-pitch-judge | Pitch Judge | Completed | Rated 95/100. Selected Candidate 2 (Missing SOP) as best demo. Praised zero-hallucination. Requested ROI/Time Saved metrics in output. |
-| qa-tester | QA Tester | Completed | PASS on all 3 scenarios. Properly demonstrates decisive automation, safe uncertainty handling, and strict compliance boundaries. |
-| compliance-lawyer | Compliance Lawyer | Completed | High Liability on Candidate 1 (decision_recommendation -> preliminary_assessment), Extreme risk on Candidate 3 (mention of fraud). Recommended global disclaimer. |
-| data-privacy-scrubber | Privacy Scrubber | Completed | Financial amounts ($50k, $20k, $1M) must be masked. Update Candidate 3 to mention sensitive financial data in its block rationale. |
-| cost-estimator | Cost Estimator | Completed | Very High ROI. Automates clear SOP matches saving expensive billable hours. Concise JSON is excellent for direct system integration. |
+| evaluator-pitch-judge | Pitch Judge | Completed | Rated Candidate 1 highly but noted the lack of a "Draft Memo" field for immediate relief. Suggested adding a `draft_memo_for_partner` field. |
+| qa-tester | QA Tester | Completed | Validated consistency of all candidates. Proposed Candidate 4: Conflicting SOPs, to demonstrate ambiguity resolution. |
+| compliance-lawyer | Compliance Lawyer | Completed | Ensured the disclaimer is robust. Changed definitive language to advisory language in JSON. |
+| data-privacy-scrubber | Privacy Scrubber | Completed | Fixed a PII echo vulnerability in Candidate 3 where `escalation_reason` returned raw inputs. Updated masking strategy. |
+| cost-estimator | Cost Estimator | Completed | Replaced qualitative time savings with concrete `roi_metrics` JSON objects detailing `estimated_human_review_cost_saved_usd` and `ai_inference_cost_usd` for all candidates. |
 
 ## Iteration Progress
-- Golden Demo Candidates generated: 3
-- Best Demo Selected: Candidate 2
+- Golden Demo Candidates generated: 4
+- Best Demo Selected: Candidate 1 (updated with Draft Memo & ROI metrics)
 - Mandatory Subagents Used:
   | Subagent | Role | Used |
   |---|---|---|
@@ -26,5 +26,5 @@
   | cost-estimator | Cost Estimator | Yes |
 
 ## Next Cadence
-- **Next Wake Scheduled At**: +60s from end of iteration 1
-- **Scheduler Task ID**: 07208755-4e7c-4bb1-8af0-73ded8d8216b/task-92
+- **Next Wake Scheduled At**: +60s from end of iteration 2
+- **Scheduler Task ID**: cd81660c-8929-48cb-a373-25c0592e312c/task-72
