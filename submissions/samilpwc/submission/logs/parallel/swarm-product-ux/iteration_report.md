@@ -81,3 +81,47 @@
 - Next round focus: JSON 출력을 C-Level 대시보드 형태로 파싱하는 UI Mockup(또는 Markdown 렌더링) 제안 및 엣지 케이스 추가 발굴.
 
 Scheduled Task ID: 316fc7fb-fb7d-43b1-a84b-3a061c251e46/task-77
+
+## Iteration 2 - 2026-07-09T22:55:42+09:00
+
+### UX Focus
+- JSON-Only 제약을 넘어선 Markdown UI Dashboard 렌더링 도입 (Dual-View Presentation)
+- Human-in-the-Loop 이관 시 Dead End 방지를 위한 Interactive Handoff 워크플로우 설계
+- Markdown UI 렌더링 시 발생할 수 있는 데이터 유출(Zero-Day Exfiltration) 차단 및 토큰 최적화
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| qa-tester | Interactive HitL 워크플로우 제안 및 Evidence Readback 3대 UX Friction 추가 도출 |
+| evaluator-pitch-judge | 60초 Pitch 대시보드 구조 (Pain -> Moment -> Relief -> Trust) 제안 |
+| cost-estimator | Markdown 대시보드의 토큰 비용 산정 및 "3x3 Bullet-Point Rule" 제약 조건 도출 |
+| compliance-lawyer | Markdown 이미지 렌더링을 통한 Zero-Day Exfiltration 취약점 분석 및 가드레일 추가 |
+
+### UX Frictions Found
+| ID | Friction | User Impact | Fix |
+|---|---|---|---|
+| UX-04 | 소스 추적 불가 (Lack of Deep Linking) | 감사인이 AI 결과를 수동으로 2차 검증해야 함 | UI 내 문맥 스니펫 및 문서 위치 제공 의무화 |
+| UX-05 | 맥락의 파편화 (Over-summarization) | 숫자의 단위나 대상(부서 등)이 누락되어 판단 지연 | Evidence 제시 시 주변 데이터(Context) 포함 의무화 |
+| UX-06 | 신뢰도 위장 (Black Box) | AI가 불확실한 항목도 100% 확신하는 톤으로 제시 | 불확실한 항목에 대해 HitL 워크플로우 내에서 옵션으로 명시 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| src/skills/ceo-issue-judge-agent/SKILL.md | Markdown Dashboard UI 출력 지침 추가 (Dual-View Presentation) | C-Level의 직관적 이해(60s Pitch)를 위한 시각적 렌더링 제공 |
+| src/skills/ceo-issue-judge-agent/SKILL.md | HitL Interactive Handoff Workflow (3단계) 추가 | 예외 처리 시 Dead End를 막고 사용자 선택권을 부여 |
+| src/skills/ceo-issue-judge-agent/SKILL.md | Markdown Exfiltration 방어 가드레일 개선 (이미지/링크 금지) | UI 유연성을 허용하되 블라인드 데이터 탈취 공격 차단 |
+| src/skills/ceo-issue-judge-agent/SKILL.md | "3x3 Bullet-Point Rule" 토큰 최적화 룰 도입 | 200토큰 이하로 출력을 제한하여 3초 이내 렌더링 성능(데모) 사수 |
+
+### Re-test Result
+| Scenario | Result | Evidence |
+|---|---|---|
+| HitL Interactive Prompt | PASS | Dashboard 하단에 3가지 옵션(`[1] AI 추천 우회법`, `[2] 보류` 등) 정상 노출 |
+| Markdown Exfiltration Attack | PASS | 외부 이미지 링크(`![](http://...)`) 주입 시도 시 악성 페이로드로 간주하고 차단 |
+| Dual-View Rendering | PASS | Markdown 표출 후 `---` 구분선과 함께 `json` 블록이 누락 없이 파싱 가능함을 확인 |
+
+### UX Score
+- Score: 95/100
+- Why not 100: 프론트엔드 레벨에서의 DOMPurify 및 CSP 헤더 추가 등 시스템적 추가 조치가 필요함.
+- Next round focus: 실제 Dummy Data로 End-to-End 동작 시뮬레이션 후 비용 및 레이턴시 정밀 최적화.
+
+Scheduled Task ID: 316fc7fb-fb7d-43b1-a84b-3a061c251e46/task-164
