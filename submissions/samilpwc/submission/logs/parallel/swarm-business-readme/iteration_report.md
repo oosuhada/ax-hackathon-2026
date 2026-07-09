@@ -77,3 +77,40 @@
 - Score: 80
 - Why not 100: 비즈니스 ROI 섹션이 22개 항목으로 과도하게 나열되어 핵심이 희석되며, Simulated RAG 단계로 기술적 실증이 약함 (수정 전 기준)
 - Next round focus: 실제 Vector DB 연동 시뮬레이션 강화 및 ROI 항목 7축으로 완전 압축
+
+## Iteration 2 - 2026-07-09T22:53:50+09:00
+
+### Business Focus
+- 경영진 대상 60초 피치 고도화 및 불필요한 인프라/보안 방어 항목 제거
+- 수학적으로 검증된 정량적 ROI 4대 지표로 재구성
+
+### Mandatory Subagents Used
+| Subagent | Required Output |
+|---|---|
+| evaluator-pitch-judge | 경영진 시각의 심층 반박 질문 3개 및 점수(78점), ROI 22개 항목 삭제 권고 |
+| roi-compliance-checker | ROI의 수학적 정합성 재검증 및 Section 1에 강력한 Disclaimer 전진 배치 |
+
+### Judge Objections Added
+| ID | Question | Risk | Best Answer |
+|---|---|---|---|
+| JO-4 | 22개 ROI 지표 중 'Logic Bomb 방어' 등이 C-Level에게 어필되나? | 메시지 분산 | 인프라/보안 내용은 백엔드 요건으로 내리고 '책임 회피 방지(Justification)'와 '비용 절감'에 집중 |
+| JO-5 | 규정이 모호한 회색지대(Gray Area)에서 잘못된 판결 리스크는? | 오판독 소송 위험 | 회색지대에서는 AI가 절대 유추하지 않고 논점만 정리해 Human 검토로 강제 이관하여 위험 원천 차단 |
+| JO-6 | 방대한 SOP 온보딩에 컨설턴트 공수가 더 들지 않는가? | 도입 비용 증가 | 초기 온보딩은 일회성 비용이나, 매번 발생하는 리서치 공수를 영구 대체해 3개월 내 BEP 달성 가능 |
+
+### README / ROI Findings
+| Priority | Issue | File | Fix |
+|---|---|---|---|
+| Critical | ROI 지표 22개 나열로 핵심 메시지 희석 | README.md | Delivery Cost, Inference Cost, Rework Reduction, Compliance Risk 4개 수학적 항목으로 완전 압축 |
+| High | RAG 및 온프레미스 관련 잔여 과장 표현 | README.md | [FACT]로 표기된 Air-gapped Vector DB 내용 삭제 및 한계점 명확화 |
+| High | 강제력 있는 면책 조항 부족 | README.md | Section 1 도입부에 최종 결정 책임은 경영진에게 있음을 명시한 Disclaimer 신설 |
+
+### Patch Applied
+| File | Change | Reason |
+|---|---|---|
+| README.md | Section 1에 Disclaimer 블록 추가 | 최우선 법적 방어막 확보 (compliance-lawyer 지시) |
+| README.md | ROI 섹션 테이블 4개 항목으로 재구성 (Inference Cost 포함) | 수학적 무결성 및 피칭 타격감 강화 (roi-architect 지시) |
+
+### Judge Score
+- Score: 78
+- Why not 100: ROI는 정리되었으나, 여전히 'Simulated' RAG라는 한계가 실제 고객사 도입 시의 신뢰성을 낮출 우려가 있음.
+- Next round focus: Synthetic MVP의 한계를 덮을 수 있는 On-premise 로드맵 구체화 및 Final Polish
