@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 from google import genai
 from google.genai import types
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google-vertex-service-account.json"
 client = genai.Client(vertexai=True, project="flai-oosuhada-20260506", location="us-central1")
 
 # 설정

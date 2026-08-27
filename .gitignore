@@ -4,6 +4,7 @@
 .env
 .env.*
 !.env.example
+.agents/scripts/google-vertex-service-account.json
 
 # Local editor/runtime noise.
 node_modules/

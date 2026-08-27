@@ -11,7 +11,6 @@ BATCH_SIZE = 50
 OUTPUT_SOP_FILE = "../samilpwc/samilpwc_submission/src/data/Dummy_SOP_Snippets.json"
 OUTPUT_BIZ_FILE = "../samilpwc/samilpwc_submission/src/data/Dummy_Business_Data.json"
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google-vertex-service-account.json"
 client = genai.Client(vertexai=True, project="flai-oosuhada-20260506", location="us-central1")
 
 # SOP 생성을 위한 다양한 기업 규제/감사 테마

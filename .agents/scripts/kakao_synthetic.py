@@ -10,7 +10,6 @@ NUM_TARGET_ITEMS = 5000
 BATCH_SIZE = 50
 OUTPUT_FILE = "../kakaopaysec/kakaopaysec_submission/src/data/Dummy_Peer_Data.json"
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./google-vertex-service-account.json"
 client = genai.Client(vertexai=True, project="flai-oosuhada-20260506", location="us-central1")
 
 # 다양한 LLM 추론을 유도하기 위한 페르소나/조건 Seed
